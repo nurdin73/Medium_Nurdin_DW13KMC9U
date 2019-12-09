@@ -7,6 +7,36 @@
   pointer-events: none;
 }
 
+.menu-item {
+  padding: 0 40px;
+  margin: 5px 10px;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: "Frank Ruhl Libre";
+}
+.menu-item-wrapper.active {
+  background-color: #4b4a4a;
+  color: #fff;
+  outline: none;
+}
+.menu-item.active {
+  background-color: #4b4a4a;
+  color: #fff;
+  outline: none;
+}
+ 
+.scroll-menu-arrow {
+  padding: 20px;
+  cursor: pointer;
+}
+.article-list {
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -27,12 +57,23 @@
 .App-link {
   color: #61dafb;
 }
-
+.p-3 {
+  padding: 25px 0;
+}
+.container-app {
+  width: 80%;
+  margin: auto;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 480px) {
+  .container-app {
+    width: 90%;
   }
 }
