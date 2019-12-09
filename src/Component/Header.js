@@ -16,6 +16,12 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Avatar, Container, Button} from '@material-ui/core';
 import '../App.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
@@ -178,7 +184,7 @@ export default function PrimarySearchAppBar() {
         <div className="container-app">
 					<Toolbar>
 						<Typography className={classes.title} variant="h6" noWrap>
-							Medium
+							<Link to="/" style={{textDecoration:"none", color:"#000"}}>Medium</Link>
 						</Typography>
 						<div className={classes.search}>
 							<form method="post" autoComplete="off">
