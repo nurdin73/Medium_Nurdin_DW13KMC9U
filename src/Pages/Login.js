@@ -58,7 +58,7 @@ class Login extends Component {
                   Sign in to get personalized story recommendations, follow
                   authors and topics you love, and interact with stories.
                 </Typography>
-                <form autoComplete="off" style={{ marginBottom: 30 }}>
+                <form autoComplete="off" style={{ marginBottom: 30 }} method="post">
                   <FormControl fullWidth style={{ marginBottom: 10 }}>
                     <InputLabel htmlFor="my-username">
                       Enter Username..
