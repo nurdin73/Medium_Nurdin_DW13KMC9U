@@ -37,6 +37,10 @@
   display: flex;
   justify-content: space-between;
 }
+.container-app2 {
+  width: 70%;
+  margin: auto;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -67,6 +71,9 @@
   width: 80%;
   margin: auto;
 }
+.information1 {
+  display: none;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -75,11 +82,121 @@
     transform: rotate(360deg);
   }
 }
+.art-app {
+  display: block;
+}
 @media only screen and (max-width: 480px) {
+  .card-img {
+    height: 25vh;
+  }
+  .text-title {
+    font-size: 16px;
+  }
+}
+.text-title {
+  text-align: center;
+  font-size: 26px !important;
+}
+.bg-article {
+  background-image: url('https://placeimg.com/1000/500/any');
+  height: 354px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.bg-article1 {
+  background-image: url('https://placeimg.com/1000/500/any');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 300px;
+}
+.content-article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 354px;
+  text-align: center;
+  padding: 20px;
+}
+.content-article2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 354px;
+  text-align: center;
+  padding: 20px;
+}
+.content-article1 {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 354px;
+  text-align: center;
+  padding: 20px;
+}
+.title1 {
+  font-size: 28px !important;
+  color: #000;
+}
+.title2 {
+  font-size: 17px !important;
+  color: #000;
+  margin-top: 20px !important;
+  margin-bottom: 30px !important;
+}
+.author-article {
+    margin-top: 40px;
+}
+@media only screen and (max-width: 780px) {
   .container-app {
     width: 90%;
   }
-  .card-img {
-    height: 25vh;
+  .art-app {
+    display: none;
+  }
+  .container-app2 {
+    width: 90%;
+  }
+  .information {
+    display: none;
+  }
+  .information1 {
+    display: block;
+    margin-top: 20px;
+  }
+  .MuiTypography-h6 {
+    font-size: 14px !important;
+  }
+  .content-article1 {
+    display: flex;
+    height: 120px;
+  }
+  .content-article {
+    display: none;
+  }
+  .text-title {
+    font-size: 26px !important;
+  }
+  .title1 {
+    font-size: 24px !important;
+  }
+  .title2 {
+    margin-top: 10px !important;
+    font-weight: 300 !important;
+    margin-bottom: 20px !important;
+  }
+  .author-article {
+    margin-top: 20px !important;
+  }
+  .name-category {
+    font-size: 70px !important;
+  }
+  .content-article2 {
+    height: 160px !important;
   }
 }

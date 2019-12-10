@@ -209,7 +209,7 @@ class Feature extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Card>
+            <Card className="art-app">
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -259,29 +259,6 @@ class Feature extends Component {
             </Card>
           </Grid>
         </Grid>
-        <div className="container-app">
-          <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-            <Typography
-              gutterBottom
-              variant="body2"
-              component="p"
-              style={{marginTop: 15}}
-            >
-              <Link
-                to="/feature"
-                style={{
-                  textDecoration: 'none',
-                  color: '#03a87c',
-                  fontWeight: 600,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                SEE ALL FEATURE >
-              </Link>
-            </Typography>
-          </div>
-          <Divider />
-        </div>
       </div>
     );
   }
