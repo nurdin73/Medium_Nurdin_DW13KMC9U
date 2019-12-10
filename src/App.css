@@ -186,6 +186,10 @@
 .information1 {
   display: none;
 }
+.bg-comment {
+  background-color: rgb(238, 235, 235) !important;
+  display: block;
+}
 @media only screen and (max-width: 780px) {
   .container-app {
     width: 90%;

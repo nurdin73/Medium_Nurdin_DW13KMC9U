@@ -14,6 +14,7 @@ import Login from './Pages/Login'
 import Home from './Pages/Home'
 import Article from './Pages/Article'
 import Category from './Pages/Category-page'
+import Comments from './Pages/Comment'
 function App() {
   return (
     <Router>
@@ -22,14 +23,17 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
           <Route path="/article">
             <Article />
           </Route>
           <Route path="/category">
             <Category />
           </Route>
-          <Route path="/register">
-            <Register />
+          <Route path="/comment">
+            <Comments />
           </Route>
           <Route path="/">
             <Home />
