@@ -12,6 +12,8 @@ import {
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
+import Article from './Pages/Article'
+import Category from './Pages/Category-page'
 function App() {
   return (
     <Router>
@@ -19,6 +21,12 @@ function App() {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/article">
+            <Article />
+          </Route>
+          <Route path="/category">
+            <Category />
           </Route>
           <Route path="/register">
             <Register />

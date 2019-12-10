@@ -14,8 +14,15 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import {Avatar, Container, Button} from '@material-ui/core';
+import {Inbox} from '@material-ui/icons'
+import {Avatar, Container, Button, List, ListItem, ListItemIcon, ListItemText, SwipeableDrawer, Divider} from '@material-ui/core';
 import '../App.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
@@ -31,6 +38,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: 'auto',
   },
   search: {
     position: 'relative',
@@ -69,7 +82,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   sectionDesktop: {
-    display: 'none',
+    display: 'flex',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
@@ -84,9 +97,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -102,83 +112,14 @@ export default function PrimarySearchAppBar() {
     setState({ ...state, [side]: open });
   };
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = event => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
-
+  
   return (
     <div className={classes.grow}>
       <AppBar position="static" color="inherit">
         <div className="container-app">
 					<Toolbar>
 						<Typography className={classes.title} variant="h6" noWrap>
-							Medium
+							<Link to="/" style={{textDecoration:"none", color:"#000"}}>Medium</Link>
 						</Typography>
 						<div className={classes.search}>
 							<form method="post" autoComplete="off">
@@ -205,35 +146,98 @@ export default function PrimarySearchAppBar() {
 								</Badge>
 							</IconButton>
 							
-							<IconButton
-								edge="end"
-								aria-label="account of current user"
-								aria-controls={menuId}
-								aria-haspopup="true"
-								onClick={handleProfileMenuOpen}
-								color="primary"
-							>
-								<Avatar alt="Remy Sharp" src="/broken-image.jpg" style={{backgroundColor:"#2e7d32"}}>
-									B
-							</Avatar>
-							</IconButton>
-						</div>
-						<div className={classes.sectionMobile}>
-							<IconButton
-								aria-label="show more"
-								aria-controls={mobileMenuId}
-								aria-haspopup="true"
-								onClick={handleMobileMenuOpen}
-								color="inherit"
-							>
-								<MoreIcon />
-							</IconButton>
+							<SwipeableTemporaryDrawer/>
 						</div>
 					</Toolbar>
         </div> 
-      </AppBar>       
-      {renderMobileMenu}
-      {renderMenu}
+      </AppBar>
+    </div>
+  );
+}
+function SwipeableTemporaryDrawer() {
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (side, open) => event => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [side]: open });
+  };
+
+  const sideList = side => (
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <div style={{display: 'flex', justifyContent: 'flex-start', padding:"20px"}}>
+        <Avatar style={{marginRight: 10, backgroundColor:"rgb(46, 125, 50)"}}>B</Avatar>
+        <div>
+          <Link
+            to="/profile"
+            style={{
+              fontFamily: 'Poppins',
+              color: '#000',
+              textDecoration: 'none',
+              fontSize: 16,
+            }}
+          >
+            John Doe
+          </Link>
+          <Typography
+            variant="caption"
+            component="p"
+            style={{fontFamily: 'Poppins', fontWeight:"bold"}}
+            color="textSecondary"
+          >
+            @johndoe
+          </Typography>
+        </div>
+      </div>
+      <Link to="/member" style={{textDecoration:"none", color:"rgb(46, 125, 50)"}}>
+        <Typography variant="caption" component="p" style={{fontFamily:"Poppins", fontSize:"14px", fontWeight:"bold", marginBottom:15, marginLeft:20}}>
+          Become a member
+        </Typography>
+      </Link>
+      <Divider />
+      <List>
+        {['New Story', 'Stories', 'Stats', 'Drafts', 'Bookmarks', 'Profile', 'Settings', 'Help', 'Sign out'].map((text, index) => (
+          <Link to="/profile" style={{textDecoration:"none", color:"#424242"}}>
+            <ListItem button key={text}>
+              <ListItemText primary={text} />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+    </div>
+  );
+  return (
+    <div>
+      <IconButton
+        edge="end"
+        onClick={toggleDrawer('right', true)}
+        color="primary"
+      >
+        <Avatar alt="Remy Sharp" src="/broken-image.jpg" style={{backgroundColor:"#2e7d32"}}>
+          B
+        </Avatar>
+      </IconButton>
+      <SwipeableDrawer
+        anchor="right"
+        open={state.right}
+        onClose={toggleDrawer('right', false)}
+        onOpen={toggleDrawer('right', true)}
+      >
+        {sideList('right')}
+      </SwipeableDrawer>
     </div>
   );
 }
