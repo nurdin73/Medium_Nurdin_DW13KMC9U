@@ -53,7 +53,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.divider1 {
+  width: 80%;
+  margin: auto;
+}
 .App-link {
   color: #61dafb;
 }
@@ -63,6 +66,24 @@
 .container-app {
   width: 80%;
   margin: auto;
+}
+.popular-img {
+  background-image: url('https://placeimg.com/640/480/any');
+  background-size: cover;
+  height: 160px;
+  background-position: center;
+}
+.popular-img-1 {
+  background-image: url('https://placeimg.com/640/480/any');
+  background-size: cover;
+  height: 100px;
+  background-position: center;
+}
+.popular-img-2 {
+  background-image: url('https://placeimg.com/640/480/any');
+  background-size: cover;
+  height: 160px;
+  background-position: center;
 }
 @keyframes App-logo-spin {
   from {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Divider, Typography, Paper, CardMedia} from '@material-ui/core';
+import {Divider, Typography, Paper, CardMedia, Grid} from '@material-ui/core';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import '../App.css';
 class Popular extends Component {
@@ -23,49 +23,36 @@ class Popular extends Component {
         <Lists/>
         <Lists/>
         <Lists/>
+        <Divider style={{marginTop: 70, marginBottom:10}}/>
+        {/* Menu */}
       </div>
     );
   }
 }
 function Lists() {
     return(
-        <Paper className="article-list">
-          <div>
-            <Typography color="textSecondary" variant="h4" component="p">
-                01
+      <div>
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <Typography variant="h4" component="p" color="textSecondary" style={{ fontFamily:"Poppins", fontWeight:"bold"}}>
+              01
             </Typography>
-          </div>
-          <div style={{marginLeft:10}}>
-            <Typography
-              gutterBottom
-              variant="subtitle1"
-              component="p"
-              style={{fontFamily: 'Frank Ruhl Libre'}}
-            >
-              <Link
-                to="/article"
-                style={{textDecoration: 'none', color: '#000'}}
-              >
-                Title Article
-              </Link>
+          </Grid>
+          <Grid item xs={10}>
+            <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:5}}>
+              The Away Luggage Saga Shows Venture Capital Needs a Reality Check
             </Typography>
-            <Typography variant="caption" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            <Link to="/profile" style={{textDecoration:"none"}}>
+              <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000", marginTop:5}}>
+                John Doe
+              </Typography>
+            </Link>
+            <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+              Dec 7 | 16 minutes read
             </Typography>
-            <Typography
-              variant="caption"
-              color="textSecondary"
-              component="p"
-              style={{
-                fontFamily: 'Roboto',
-                fontWeight: 'bold',
-                textTransform: 'uppercase',
-              }}
-            >
-              Feb 19, 2019 | 7 min read
-            </Typography>
-          </div>
-        </Paper>
+          </Grid>
+        </Grid>
+      </div>
     )
 }
 

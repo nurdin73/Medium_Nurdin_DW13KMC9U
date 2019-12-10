@@ -1,16 +1,8 @@
 import React, {Component} from 'react';
 import {
   Grid,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
   Typography,
-  CardActions,
-  Button,
-  Paper,
   Divider,
-  Container,
 } from '@material-ui/core';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import '../App.css';
@@ -23,264 +15,133 @@ class Feature extends Component {
   render () {
     return (
       <div>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={4}>
-            <Card>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://placeimg.com/640/480/any"
-                  title="Title Image"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    <Link
-                      to="/article"
-                      style={{textDecoration: 'none', color: '#000'}}
-                    >
-                      Title Article
-                    </Link>
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                    across all continents except Antarctica
-                  </Typography>
-                  <Typography
-                    gutterBottom
-                    variant="body2"
-                    component="p"
-                    style={{marginTop: 15}}
-                  >
-                    <Link
-                      to="/profile"
-                      style={{textDecoration: 'none', color: '#000'}}
-                    >
-                      John Doe
-                    </Link>
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Dec 6 | 4 min read
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+        <Grid container spacing={4} style={{marginBottom:20}}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Link to="/article" style={{textDecoration:"none"}}>
+              <div>
+                <div className="popular-img"></div>
+                <Grid container spacing={2} style={{display:"flex", justifyContent:"flex-end"}}>
+                  <Grid item xs={12} md={11}>
+                    <div style={{paddingTop:10}}>
+                      <Typography variant="subtitle1" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
+                        The Away Luggage Saga Shows Venture Capital Needs a Reality Check
+                      </Typography>
+                      <Typography variant="caption" component="p" style={{fontFamily:"Poppins", fontWeight:"bold"}} color="textSecondary">
+                        Silicon Valley is indeed changing the world, and not always for the better
+                      </Typography>
+                      <Link to="/profile" style={{textDecoration:"none"}}>
+                        <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15, fontWeight:"bold"}}>
+                          John Doe
+                        </Typography>
+                      </Link>
+                      <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+                        Dec 7 | 16 minutes read
+                      </Typography>
+                    </div>
+                  </Grid>
+                </Grid>
+              </div>
+            </Link>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper className="article-list">
-              <div style={{flex: 1, marginRight: 10}}>
-                <CardMedia
-                  component="img"
-                  height="100"
-                  image="https://placeimg.com/640/480/any"
-                  title="Title Image"
-                />
-              </div>
-              <div style={{flex: 3}}>
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                  component="p"
-                  style={{fontFamily: 'Frank Ruhl Libre'}}
-                >
-                  <Link
-                    to="/article"
-                    style={{textDecoration: 'none', color: '#000'}}
-                  >
-                    Title Article
-                  </Link>
-                </Typography>
-                <Typography
-                  variant="caption"
-                  color="textSecondary"
-                  component="p"
-                >
-                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                </Typography>
-                <Typography
-                  variant="caption"
-                  color="textSecondary"
-                  component="p"
-                  style={{
-                    fontFamily: 'Roboto',
-                    fontWeight: 'bold',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Feb 19, 2019 | 7 min read
-                </Typography>
-              </div>
-            </Paper>
-            <Paper className="article-list">
-              <div style={{flex: 1, marginRight: 10}}>
-                <CardMedia
-                  component="img"
-                  height="100"
-                  image="https://placeimg.com/640/480/any"
-                  title="Title Image"
-                />
-              </div>
-              <div style={{flex: 3}}>
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                  component="p"
-                  style={{fontFamily: 'Frank Ruhl Libre'}}
-                >
-                  <Link
-                    to="/article"
-                    style={{textDecoration: 'none', color: '#000'}}
-                  >
-                    Title Article
-                  </Link>
-                </Typography>
-                <Typography
-                  variant="caption"
-                  color="textSecondary"
-                  component="p"
-                >
-                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                </Typography>
-                <Typography
-                  variant="caption"
-                  color="textSecondary"
-                  component="p"
-                  style={{
-                    fontFamily: 'Roboto',
-                    fontWeight: 'bold',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Feb 19, 2019 | 7 min read
-                </Typography>
-              </div>
-            </Paper>
-            <Paper className="article-list">
-              <div style={{flex: 1, marginRight: 10}}>
-                <CardMedia
-                  component="img"
-                  height="100"
-                  image="https://placeimg.com/640/480/any"
-                  title="Title Image"
-                />
-              </div>
-              <div style={{flex: 3}}>
-                <Typography
-                  gutterBottom
-                  variant="subtitle1"
-                  component="p"
-                  style={{fontFamily: 'Frank Ruhl Libre'}}
-                >
-                  <Link
-                    to="/article"
-                    style={{textDecoration: 'none', color: '#000'}}
-                  >
-                    Title Article
-                  </Link>
-                </Typography>
-                <Typography
-                  variant="caption"
-                  color="textSecondary"
-                  component="p"
-                >
-                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                </Typography>
-                <Typography
-                  variant="caption"
-                  color="textSecondary"
-                  component="p"
-                  style={{
-                    fontFamily: 'Roboto',
-                    fontWeight: 'bold',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Feb 19, 2019 | 7 min read
-                </Typography>
-              </div>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="https://placeimg.com/640/480/any"
-                  title="Title Image"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    <Link
-                      to="/article"
-                      style={{textDecoration: 'none', color: '#000'}}
-                    >
-                      Title Article
-                    </Link>
+          <Grid item xs={12} sm={6} md={4}>
+            <Link to="/article" style={{textDecoration:"none"}}>
+              <Grid container spacing={2}>
+                <Grid item xs={3}>
+                  <div className="popular-img-1"></div>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
+                    The Away Luggage Saga Shows Venture Capital Needs a Reality Check
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                    across all continents except Antarctica
-                  </Typography>
-                  <Typography
-                    gutterBottom
-                    variant="body2"
-                    component="p"
-                    style={{marginTop: 15}}
-                  >
-                    <Link
-                      to="/profile"
-                      style={{textDecoration: 'none', color: '#000'}}
-                    >
+                  <Link to="/profile" style={{textDecoration:"none"}}>
+                    <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15}}>
                       John Doe
-                    </Link>
+                    </Typography>
+                  </Link>
+                  <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+                    Dec 7 | 16 minutes read
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Dec 6 | 4 min read
+                </Grid>
+              </Grid>
+            </Link>
+            <Link to="/article" style={{textDecoration:"none"}}>
+              <Grid container spacing={2}>
+                <Grid item xs={3}>
+                  <div className="popular-img-1"></div>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
+                    The Away Luggage Saga Shows Venture Capital Needs a Reality Check
                   </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+                  <Link to="/profile" style={{textDecoration:"none"}}>
+                    <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15}}>
+                      John Doe
+                    </Typography>
+                  </Link>
+                  <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+                    Dec 7 | 16 minutes read
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Link>
+            <Link to="/article" style={{textDecoration:"none"}}>
+              <Grid container spacing={2}>
+                <Grid item xs={3}>
+                  <div className="popular-img-1"></div>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
+                    The Away Luggage Saga Shows Venture Capital Needs a Reality Check
+                  </Typography>
+                  <Link to="/profile" style={{textDecoration:"none"}}>
+                    <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15}}>
+                      John Doe
+                    </Typography>
+                  </Link>
+                  <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+                    Dec 7 | 16 minutes read
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Link>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Link to="/article" style={{textDecoration:"none"}}>
+              <div>
+                <div className="popular-img"></div>
+                <Grid container spacing={2} style={{display:"flex", justifyContent:"flex-start"}}>
+                  <Grid item xs={12} md={11}>
+                    <div style={{paddingTop:10}}>
+                      <Typography variant="subtitle1" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
+                        The Away Luggage Saga Shows Venture Capital Needs a Reality Check
+                      </Typography>
+                      <Typography variant="caption" component="p" style={{fontFamily:"Poppins", fontWeight:"bold"}} color="textSecondary">
+                        Silicon Valley is indeed changing the world, and not always for the better
+                      </Typography>
+                      <Link to="/profile" style={{textDecoration:"none"}}>
+                        <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15, fontWeight:"bold"}}>
+                          John Doe
+                        </Typography>
+                      </Link>
+                      <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+                        Dec 7 | 16 minutes read
+                      </Typography>
+                    </div>
+                  </Grid>
+                </Grid>
+              </div>
+            </Link>
           </Grid>
         </Grid>
-        <div className="container-app">
-          <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-            <Typography
-              gutterBottom
-              variant="body2"
-              component="p"
-              style={{marginTop: 15}}
-            >
-              <Link
-                to="/feature"
-                style={{
-                  textDecoration: 'none',
-                  color: '#03a87c',
-                  fontWeight: 600,
-                  fontFamily: 'Poppins',
-                }}
-              >
-                SEE ALL FEATURE >
-              </Link>
-            </Typography>
+        <div className="divider1">
+          <div style={{display:"flex", justifyContent:"flex-end", alignItems:"end"}}>
+            <Link to="/feature" style={{textDecoration:"none"}}>
+              <Typography variant="subtitle1" component="p" style={{ fontFamily:"Poppins", textTransform:"uppercase",fontWeight:"700", color:"#03a87c", lineHeight:"20px", marginBottom:15}}>
+                See All Feature >>
+              </Typography>
+            </Link>
           </div>
-          <Divider />
+          <Divider/>
         </div>
       </div>
     );
