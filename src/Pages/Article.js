@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import '../App.css';
 import { Facebook, Twitter, LinkedIn, Instagram } from '@material-ui/icons';
-import { Fab } from '@material-ui/core'
+import { Fab, Divider } from '@material-ui/core'
 import {
   Button,
   AppBar,
@@ -222,6 +222,72 @@ function Content () {
 						Twitter
 					</Fab>
 				</div>			
+        <div style={{display:"flex"}}>
+          {['animals', 'education', 'jungle', 'reptile'].map((text, index) => (
+            <Link to="/category" style={{textDecoration:"none"}}>
+              <Button variant="contained" color="default" size="small" style={{marginRight:10}}>
+                {text}
+              </Button>
+            </Link>
+          ))}
+        </div>
+        <Divider style={{margin:"40px 0"}} />
+        <Grid container spacing={2} style={{margin:"20px 0"}}>
+          <Grid item xs={10}>
+            <Grid container spacing={2}>
+              <Grid item xs={2} style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random" style={{width:"90px", height:"90px"}} />
+              </Grid>
+              <Grid item xs={10}>
+                <Typography color="textSecondary" variant="body1" component="p" style={{fontFamily:"Poppins", textTransform:"uppercase"}}>
+                  Written By
+                </Typography>
+                <Typography color="textPrimary" variant="h5" component="p" style={{fontFamily:"Bitter", fontWeight:"bold"}}>
+                  Written By
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={2} style={{display:"flex", justifyContent:"flex-end", alignItems:"center"}}>
+            <Button variant="outlined" color="primary" size="small">
+              Follow
+            </Button>
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} style={{margin:"20px 0"}}>
+          <Grid item xs={10}>
+            <Grid container spacing={2}>
+              <Grid item xs={2} style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random" style={{width:"90px", height:"90px"}} />
+              </Grid>
+              <Grid item xs={10}>
+                <Typography color="textSecondary" variant="body1" component="p" style={{fontFamily:"Poppins", textTransform:"uppercase"}}>
+                  Written By
+                </Typography>
+                <Typography color="textPrimary" variant="h5" component="p" style={{fontFamily:"Bitter", fontWeight:"bold"}}>
+                  Written By
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={2} style={{display:"flex", justifyContent:"flex-end", alignItems:"center"}}>
+            <Button variant="outlined" color="primary" size="small">
+              Follow
+            </Button>
+          </Grid>
+        </Grid>
+        <Divider style={{margin:"40px 0"}} />
+        <Grid container>
+          <Grid item xs={12}>
+            <div style={{display:"block"}}>
+              <Link to="/comment" style={{textDecoration:"none"}}>
+                <Button variant="outlined" color="primary" style={{width:"100%", padding:"15px 0"}}>
+                  See responses
+                </Button>
+              </Link>
+            </div>
+          </Grid>
+        </Grid>
       </div>
     </Container>
   );
