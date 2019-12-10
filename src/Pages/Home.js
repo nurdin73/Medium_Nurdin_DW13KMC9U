@@ -44,7 +44,7 @@ class Home extends Component {
               </Link>
             </Typography>
           </div>
-          <Divider />
+          <Divider style={{marginBottom:30}} />
           <Grid container spacing={8}>
             <Grid item xs={12} md={8}>
               <Article />

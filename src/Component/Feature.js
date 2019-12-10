@@ -133,16 +133,6 @@ class Feature extends Component {
             </Link>
           </Grid>
         </Grid>
-        <div className="divider1">
-          <div style={{display:"flex", justifyContent:"flex-end", alignItems:"end"}}>
-            <Link to="/feature" style={{textDecoration:"none"}}>
-              <Typography variant="subtitle1" component="p" style={{ fontFamily:"Poppins", textTransform:"uppercase",fontWeight:"700", color:"#03a87c", lineHeight:"20px", marginBottom:15}}>
-                See All Feature >>
-              </Typography>
-            </Link>
-          </div>
-          <Divider/>
-        </div>
       </div>
     );
   }

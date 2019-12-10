@@ -60,7 +60,7 @@ class listCategory extends Component {
             item
             xs={12}
             md={6}
-            className="information1"
+            className="information1" 
             style={{ marginTop: 20 }}
           >
             <Typography

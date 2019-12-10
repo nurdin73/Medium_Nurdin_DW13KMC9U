@@ -170,6 +170,9 @@
 .author-article {
     margin-top: 40px;
 }
+.information1 {
+  display: none;
+}
 @media only screen and (max-width: 780px) {
   .container-app {
     width: 90%;
