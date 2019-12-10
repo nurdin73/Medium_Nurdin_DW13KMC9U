@@ -76,89 +76,61 @@ class listCategory extends Component {
           </Grid>
         </Grid>
         <Link to="/article" style={{ textDecoration: "none" }}>
-          <Card style={{ marginBottom: 40 }}>
-            <CardActionArea>
-              <Grid container>
-                <Grid item xs={12} md={8}>
-                  <Card style={{ marginBottom: 10 }}>
-                    <CardMedia
-                      component="img"
-                      alt="Contemplative Reptile"
-                      height="180"
-                      image="https://placeimg.com/1000/480/any"
-                      title="Contemplative Reptile"
-                    />
-                  </Card>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="Contemplative Reptile"
-                      height="180"
-                      image="https://placeimg.com/1000/480/any"
-                      title="Contemplative Reptile"
-                    />
-                  </Card>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  md={4}
-                  style={{
-                    backgroundColor: "#6A0BFF",
-                    color: "#ffffff",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    padding: 20
-                  }}
-                >
-                  <div style={{ textAlign: "center" }}>
-                    <Typography
-                      variant="h5"
-                      component="body1"
-                      className="text-title"
-                      style={{ fontFamily: "Poppins" }}
-                    >
-                      Architects Are Playing With the Future of Design in Video
-                      Games
-                    </Typography>
+          <Grid container style={{marginBottom:40}}>
+            <Grid item xs={12} md={8}>
+              <div className="popular-img-2" style={{marginBottom:10}}></div>
+              <div className="popular-img-2"></div>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <div className="content-article3" style={{backgroundColor:"#6A0BFF", height:"290px"}}>
+                <div>
+                  <Typography
+                    variant="h4"
+                    component="p"
+                    style={{ fontFamily: "Poppins", fontWeight: "bold", color:"#fff" }}
+                    className="title1"
+                  >
+                    Welcome to a Refreshed OneZero
+                  </Typography>
+                  <Typography
+                    variant="h4"
+                    component="p"
+                    style={{ fontFamily: "Poppins", fontWeight: "bold", color:"#fff" }}
+                    className="title2"
+                  >
+                    We have a few new things to share
+                  </Typography>
+                  <Link
+                    to="/profile"
+                    style={{ textDecoration: "none", color: "#DAF832" }}
+                  >
                     <Typography
                       variant="body2"
                       component="p"
-                      style={{ fontFamily: "Poppins" }}
+                      style={{
+                        fontFamily: "Poppins",
+                        fontWeight: "bold",
+                        marginTop: 40
+                      }}
                     >
-                      game worlds can be blueprint for the real world,
-                      liberating spaces where rules can be reinvented and the
-                      invisible made visible
+                      John Doe
                     </Typography>
-                    <Link
-                      to="/profile"
-                      style={{ textDecoration: "none", color: "#DAF832" }}
-                    >
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        style={{
-                          fontFamily: "Poppins",
-                          fontWeight: "bold",
-                          marginTop: 40
-                        }}
-                      >
-                        John Doe
-                      </Typography>
-                    </Link>
-                    <Typography
-                      variant="body2"
-                      component="p"
-                      style={{ fontFamily: "Poppins" }}
-                    >
-                      Dec 9 | 6 min read
-                    </Typography>
-                  </div>
-                </Grid>
-              </Grid>
-            </CardActionArea>
-          </Card>
+                  </Link>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    style={{
+                      fontFamily: "Poppins",
+                      color: "#000",
+                      fontWeight: "bold"
+                    }}
+                  >
+                    Dec 9 | 6 min read
+                  </Typography>
+                </div>
+              </div>
+            </Grid>
+          </Grid>
         </Link>
         <Link to="/article" style={{ textDecoration: "none" }}>
           <CardActionArea>
