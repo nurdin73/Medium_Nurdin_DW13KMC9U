@@ -1,36 +1,44 @@
 import React, { Component } from "react";
 import Header from "../Component/Header";
 import "../App.css";
-import { Typography, Grid, Paper, Avatar } from "@material-ui/core";
-import Links from "@material-ui/core/Link";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {
-  Favorite,
-  ExpandMore,
-  BookOutlined
-} from "@material-ui/icons";
+  Typography,
+  Grid,
+  Paper,
+  Avatar,
+  TextField,
+  Button
+} from "@material-ui/core";
+import Links from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
+import { Favorite, ExpandMore, BookOutlined } from "@material-ui/icons";
 class Comment extends Component {
-  render() {
-    const coments = [
-      {
-        name: "John Doe",
-        inisial: "J",
-				date: "Jul 8, 2019",
-				respons: 30,
-				like : 320,
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae laoreet ligula, ornare blandit orci. Nullam feugiat, orci gravida rutrum hendrerit, libero neque ultricies turpis, sed imperdiet ex dolor quis justo. Pellentesque accumsan vitae eros id pretium. Phasellus a diam congue, bibendum quam a, semper enim. Proin in sagittis dolor, et sagittis nulla."
-      },
-      {
-        name: "Yulia",
-        inisial: "Y",
-				date: "Jul 10, 2019",
-				respons: 6,
-				like : 326,
-        content:
-          "Donec eget ultricies lectus. Proin luctus, sem ut ultrices luctus, felis tortor volutpat nisl, non fermentum sem erat tincidunt urna. In faucibus suscipit metus. Phasellus nec aliquam quam, facilisis vehicula neque. Nullam ultricies a mauris nec porta. Donec ullamcorper ipsum eu ipsum lacinia"
+  constructor(props) {
+    super(props);
+    this.state = {
+      add: "",
+      data: []
+    };
+  }
+
+  onChange = event => {
+    this.setState({ add: event.target.value });
+  };
+  onSubmit = event => {
+    this.setState({
+      add: "",
+      data: [...this.state.data, this.state.add]
+    });
+  };
+  addData = event => {
+    if (event.keyCode == 13) {
+      if (document.getElementById("outlined-textarea").value !== "") {
+        this.onSubmit();
+        document.getElementById("outlined-textarea").value = "";
       }
-    ];
+    }
+  };
+  render() {
     return (
       <div className="bg-comment">
         <Header />
@@ -112,21 +120,19 @@ class Comment extends Component {
         </div>
         <div
           style={{
-            marginBottom: 20,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "180px"
+            marginTop: 20
           }}
         >
-          <Grid item xs={11} md={6}>
+          <Grid item xs={11} md={6} style={{ marginBottom: 30 }}>
             <Typography
               variant="caption"
               component="p"
               style={{
                 fontWeight: "bold",
-                fontFamily: "Poppins",
-                marginBottom: 10
+                fontFamily: "Poppins"
               }}
             >
               Responses
@@ -154,169 +160,159 @@ class Comment extends Component {
                     src="https://source.unsplash.com/random"
                   />
                 </Grid>
-                <Grid
-                  item
-                  xs={11}
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignItems: "center"
-                  }}
-                >
-                  <from>
-                    <div
-                      style={{
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center"
-                      }}
-                    >
-                      <textarea
-                        name=""
-                        className="add-comment"
-                        cols="75"
-                        placeholder="Write a response.."
-                      ></textarea>
-                    </div>
+                <Grid item xs={11}>
+                  <from onSubmit={this.onSubmit}>
+                    <TextField
+                      name="comment"
+                      id="outlined-textarea"
+                      label="Write a response"
+                      placeholder="Write a response"
+                      multiline
+                      variant="outlined"
+                      fullWidth={true}
+                      value={this.state.add}
+                      onChange={this.onChange}
+                      onKeyUp={this.addData}
+                    />
                   </from>
                 </Grid>
               </Grid>
             </div>
           </Grid>
         </div>
-				{coments.map((text, index) => (
+        {this.state.data.map((item, index) => (
           <div
-          style={{
-            marginBottom: 20,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <Grid item xs={11} md={6}>
-            <div
-              style={{
-                border: "1px solid #ccc",
-                padding: "20px",
-                borderRadius: "5px",
-                backgroundColor: "#fff",
-                marginBottom: 40
-              }}
-            >
-              <Typography
-                variant="body2"
-                component="p"
-                color="textSecondary"
-                style={{
-                  fontFamily: "Poppins",
-                  marginBottom: 20
-                }}
-              >
-                Applause from Chris Morgan (author)
-              </Typography>
+            style={{
+              marginTop: "30px",
+              marginBottom: 20,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Grid item xs={11} md={6}>
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "flex-start",
-                  marginBottom: 20
+                  border: "1px solid #ccc",
+                  padding: "20px",
+                  borderRadius: "5px",
+                  backgroundColor: "#fff",
+                  marginBottom: 40
                 }}
               >
-                <Avatar style={{ marginRight: 10 }}>{text.inisial}</Avatar>
-                <div>
-                  <Link
-                    to="/profile"
-                    style={{
-                      fontFamily: "Roboto Condensed",
-                      color: "#000",
-                      textDecoration: "none",
-                      fontSize: 16,
-                      color: "#03a87c"
-                    }}
-                  >
-                    {text.name}
-                  </Link>
-                  <Typography
-                    variant="caption"
-                    component="p"
-                    style={{ fontFamily: "Poppins" }}
-                  >
-                    {text.date}
-                  </Typography>
-                </div>
-              </div>
-              <Link to="/comment" style={{ textDecoration: "none" }}>
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   component="p"
-                  style={{ fontFamily: "Frank Ruhl Libre", color: "#000" }}
-                >
-                  {text.content}
-                </Typography>
-              </Link>
-              <Links href="/comment" color="inherit">
-                <Typography
-                  variant="subtitle2"
                   color="textSecondary"
-                  component="p"
-                  style={{ fontFamily: "Gupter", marginTop: 10 }}
+                  style={{
+                    fontFamily: "Poppins",
+                    marginBottom: 20
+                  }}
                 >
-                  Read More..
+                  Applause from Chris Morgan (author)
                 </Typography>
-              </Links>
-              <Grid container style={{ marginTop: 20 }}>
-                <Grid item xs={2}>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                    component="p"
-                  >
-                    <Links href="#" color="inherit">
-                      <Favorite /> {text.like}
-                    </Links>
-                  </Typography>
-                </Grid>
-                <Grid
-                  item
-                  xs={10}
-                  style={{ display: "flex", justifyContent: "flex-end" }}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    marginBottom: 20
+                  }}
                 >
-                  <Link
-                    to="/comment"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      textDecoration: "none"
-                    }}
+                  <Avatar style={{ marginRight: 10 }}>J</Avatar>
+                  <div>
+                    <Link
+                      to="/profile"
+                      style={{
+                        fontFamily: "Roboto Condensed",
+                        color: "#000",
+                        textDecoration: "none",
+                        fontSize: 16,
+                        color: "#03a87c"
+                      }}
+                    >
+                      John doe
+                    </Link>
+                    <Typography
+                      variant="caption"
+                      component="p"
+                      style={{ fontFamily: "Poppins" }}
+                    >
+                      Dec 7, 2019
+                    </Typography>
+                  </div>
+                </div>
+                <Link to="/comment" style={{ textDecoration: "none" }}>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    style={{ fontFamily: "Frank Ruhl Libre", color: "#000" }}
                   >
+                    {item}
+                  </Typography>
+                </Link>
+                <Links href="/comment" color="inherit">
+                  <Typography
+                    variant="subtitle2"
+                    color="textSecondary"
+                    component="p"
+                    style={{ fontFamily: "Gupter", marginTop: 10 }}
+                  >
+                    Read More..
+                  </Typography>
+                </Links>
+                <Grid container style={{ marginTop: 20 }}>
+                  <Grid item xs={2}>
                     <Typography
-                      variant="caption"
-                      component="p"
                       color="textSecondary"
-                    >
-                      {text.respons} Response
-                    </Typography>
-                    <Typography
-                      variant="caption"
+                      variant="body2"
                       component="p"
-                      color="textSecondary"
-                      style={{ margin: "0 5px" }}
                     >
-                      <BookOutlined />
+                      <Links href="#" color="inherit">
+                        <Favorite /> 2K
+                      </Links>
                     </Typography>
-                    <Typography
-                      variant="caption"
-                      component="p"
-                      color="textSecondary"
+                  </Grid>
+                  <Grid
+                    item
+                    xs={10}
+                    style={{ display: "flex", justifyContent: "flex-end" }}
+                  >
+                    <Link
+                      to="/comment"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        textDecoration: "none"
+                      }}
                     >
-                      <ExpandMore color="inherit" />
-                    </Typography>
-                  </Link>
+                      <Typography
+                        variant="caption"
+                        component="p"
+                        color="textSecondary"
+                      >
+                        2 Response
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        component="p"
+                        color="textSecondary"
+                        style={{ margin: "0 5px" }}
+                      >
+                        <BookOutlined />
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        component="p"
+                        color="textSecondary"
+                      >
+                        <ExpandMore color="inherit" />
+                      </Typography>
+                    </Link>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </div>
-          </Grid>
-        </div>
+              </div>
+            </Grid>
+          </div>
         ))}
       </div>
     );
