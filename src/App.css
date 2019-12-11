@@ -220,6 +220,13 @@
   background-color: rgb(238, 235, 235) !important;
   display: block;
 }
+.related-img {
+  background-image: url('https://source.unsplash.com/random');
+  background-size: cover;
+  height: 300px;
+  background-position: center;
+  margin: 8px 0;
+}
 @media only screen and (max-width: 780px) {
   .container-app {
     width: 90%;

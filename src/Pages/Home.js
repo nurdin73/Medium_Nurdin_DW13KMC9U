@@ -48,7 +48,7 @@ class Home extends Component {
               <Popular />
             </Grid>
           </Grid>
-        </div>
+        </div>        
       </div>
     );
   }

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../App.css";
 import { Facebook, Twitter, LinkedIn, Instagram } from "@material-ui/icons";
 import { Fab, Divider } from "@material-ui/core";
+import RelatedArticle from '../Component/relatedArticle'
 import {
   Button,
   AppBar,
@@ -375,6 +376,7 @@ class Article extends Component {
             </Grid>
           </div>
         </Container>
+        <RelatedArticle />
       </div>
     );
   }
