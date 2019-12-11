@@ -13,6 +13,26 @@ class Feature extends Component {
   }
 
   render () {
+    const listPopular = [
+      {
+        image : 'https://source.unsplash.com/random',
+        title : 'The Away Luggage Saga Shows Venture Capital Needs a Reality Check',
+        author : 'John Doe',
+        dateCreated : 'Dec 7 | 16 minutes read'
+      },
+      {
+        image : 'https://placeimg.com/640/480/any',
+        title : 'The Away Luggage Saga Shows',
+        author : 'Frank',
+        dateCreated : 'Nov 19 | 26 minutes read'
+      },
+      {
+        image : 'https://picsum.photos/700/500',
+        title : 'Venture Capital Needs a Reality Check',
+        author : 'Lisa',
+        dateCreated : 'Apr 1 | 19 minutes read'
+      },
+    ]
     return (
       <div>
         <Grid container spacing={4} style={{marginBottom:20}}>
@@ -44,66 +64,28 @@ class Feature extends Component {
             </Link>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Link to="/article" style={{textDecoration:"none"}}>
-              <Grid container spacing={2}>
-                <Grid item xs={3}>
-                  <div className="popular-img-1"></div>
-                </Grid>
-                <Grid item xs={9}>
-                  <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
-                    The Away Luggage Saga Shows Venture Capital Needs a Reality Check
-                  </Typography>
-                  <Link to="/profile" style={{textDecoration:"none"}}>
-                    <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15}}>
-                      John Doe
+            {listPopular.map((lists) => (
+              <Link to="/article" style={{textDecoration:"none"}}>
+                <Grid container spacing={2}>
+                  <Grid item xs={3}>
+                    <div className="popular-img-1" style={{backgroundImage:`url(${lists.image})`}}></div>
+                  </Grid>
+                  <Grid item xs={9}>
+                    <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
+                      {lists.title}
                     </Typography>
-                  </Link>
-                  <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
-                    Dec 7 | 16 minutes read
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Link>
-            <Link to="/article" style={{textDecoration:"none"}}>
-              <Grid container spacing={2}>
-                <Grid item xs={3}>
-                  <div className="popular-img-1"></div>
-                </Grid>
-                <Grid item xs={9}>
-                  <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
-                    The Away Luggage Saga Shows Venture Capital Needs a Reality Check
-                  </Typography>
-                  <Link to="/profile" style={{textDecoration:"none"}}>
-                    <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15}}>
-                      John Doe
+                    <Link to="/profile" style={{textDecoration:"none"}}>
+                      <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15}}>
+                        {lists.author}
+                      </Typography>
+                    </Link>
+                    <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+                      {lists.dateCreated}
                     </Typography>
-                  </Link>
-                  <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
-                    Dec 7 | 16 minutes read
-                  </Typography>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Link>
-            <Link to="/article" style={{textDecoration:"none"}}>
-              <Grid container spacing={2}>
-                <Grid item xs={3}>
-                  <div className="popular-img-1"></div>
-                </Grid>
-                <Grid item xs={9}>
-                  <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:15}}>
-                    The Away Luggage Saga Shows Venture Capital Needs a Reality Check
-                  </Typography>
-                  <Link to="/profile" style={{textDecoration:"none"}}>
-                    <Typography variant="subtitle1" component="p" style={{fontFamily:"Gupter", color:"#000", marginTop:15}}>
-                      John Doe
-                    </Typography>
-                  </Link>
-                  <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
-                    Dec 7 | 16 minutes read
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Link>
+              </Link>
+            ))}
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Link to="/article" style={{textDecoration:"none"}}>

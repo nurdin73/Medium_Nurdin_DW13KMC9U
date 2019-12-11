@@ -48,8 +48,6 @@ class Home extends Component {
           <Grid container spacing={8}>
             <Grid item xs={12} md={8}>
               <Article />
-              <Article />
-              <Article />
             </Grid>
             <Grid item xs={12} md={4}>
               <Popular />
