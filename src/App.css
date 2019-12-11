@@ -6,7 +6,16 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.add-comment {
+  border: none;
+  outline: none;
+  resize: none;
+  background: none;
+  font-family: "Poppins" !important;
+  font-size: 17px;
+  width: 100% !important;
+  display: block;
+}
 .menu-item {
   padding: 0 40px;
   margin: 5px 10px;
