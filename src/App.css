@@ -118,7 +118,12 @@
 .art-app {
   display: block;
 }
-
+.avatar-profile {
+  width: 120px !important;
+  height: 120px !important;
+  font-size: 60px !important;
+  background-color: rgb(46, 125, 50) !important;
+}
 @media only screen and (max-width: 480px) {
   .card-img {
     height: 25vh;
