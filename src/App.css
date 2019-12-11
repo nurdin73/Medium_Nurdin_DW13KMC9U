@@ -118,9 +118,30 @@
 .art-app {
   display: block;
 }
+
 @media only screen and (max-width: 480px) {
   .card-img {
     height: 25vh;
+  }
+  .popular-article {
+    display: none;
+  }
+  .container-app {
+    width: 100%;
+  }
+  .text-title {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .card-img {
+    height: 25vh;
+  }
+  .container-app {
+    width: 90%;
+  }
+  .popular-article .popular-img {
+    height: 300px;
   }
   .text-title {
     font-size: 16px;
@@ -210,6 +231,9 @@
     width: 90%;
   }
   .information {
+    display: none;
+  }
+  .popular-article {
     display: none;
   }
   .information1 {

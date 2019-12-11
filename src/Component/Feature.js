@@ -7,11 +7,6 @@ import {
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import '../App.css';
 class Feature extends Component {
-  constructor (props) {
-    super (props);
-    this.state = {variable: 0};
-  }
-
   render () {
     const listPopular = [
       {
@@ -87,9 +82,9 @@ class Feature extends Component {
               </Link>
             ))}
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={12} md={4}>
             <Link to="/article" style={{textDecoration:"none"}}>
-              <div>
+              <div className="popular-article">
                 <div className="popular-img"></div>
                 <Grid container spacing={2} style={{display:"flex", justifyContent:"flex-start"}}>
                   <Grid item xs={12} md={11}>
