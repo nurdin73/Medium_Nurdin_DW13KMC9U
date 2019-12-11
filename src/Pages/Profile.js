@@ -11,7 +11,7 @@ class Profile extends Component {
       <div>
         <Header />
 				<Grid container style={{display:"flex", justifyContent:"center", alignItems:"flex-start"}}>
-					<Grid item xs={6} style={{margin:"40px 0"}}>
+					<Grid item xs={11} md={6} style={{margin:"40px 0"}}>
 						<div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
 							<div>
 								<div style={{display:"flex", alignItems:"center"}}>

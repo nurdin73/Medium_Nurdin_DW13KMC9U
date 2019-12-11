@@ -75,12 +75,12 @@ class RelatedArticle extends Component {
 										<Tooltip title="Like">
 											<Link to="#" style={{textDecoration:"none"}}>
 												<Typography variant="subtitle1s" component="p" color="textSecondary" style={{display:"flex", alignItems:"center", marginRight:10}}>
-													<FavoriteBorderOutlined /> 2K
+													<FavoriteBorderOutlined /> {relatedPost.like}
 												</Typography>
 											</Link>
 										</Tooltip>
 										<Tooltip title="Bookmark">
-											<Link to="#">
+											<Link to="/bookmark">
 												<Typography variant="subtitle1s" component="p" color="textSecondary" style={{display:"flex", alignItems:"center"}}>
 													<BookmarkBorder />
 												</Typography>

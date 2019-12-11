@@ -16,6 +16,7 @@ import Article from './Pages/Article'
 import Category from './Pages/Category-page'
 import Comments from './Pages/Comment'
 import Profile from './Pages/Profile'
+import Bookmarks from './Pages/Bookmark'
 function App() {
   return (
     <Router>
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/bookmark">
+            <Bookmarks />
           </Route>
           <Route path="/profile">
             <Profile />
