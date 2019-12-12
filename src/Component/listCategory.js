@@ -7,14 +7,42 @@ import {
   Card,
   CardActionArea,
   CardMedia,
-	Divider,
-	Container
+  Divider,
+  Container
 } from "@material-ui/core";
 import "../App.css";
 class listCategory extends Component {
   constructor(props) {
     super(props);
-    this.state = { variable: 0 };
+    this.state = {
+      article: [
+        {
+          title:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mauris nisl, elementum facilisis orci a, ultrices porta purus.",
+          author: "John Doe",
+          dateCreated: "Dec 10 | 6 min read",
+          image: "https://source.unsplash.com/random"
+        },
+        {
+          title: "Lorem Ipsum is simply dummy text of the",
+          content:
+            "Lorem ipsum dolor elementum facilisis orci a, ultrices porta purus.",
+          author: "Lisa",
+          dateCreated: "Nov 12 | 2 min read",
+          image: "https://placeimg.com/640/480/any"
+        },
+        {
+          title: "text of the printing and typesetting industry",
+          content:
+            "consectetur adipiscing elit. Fusce mauris nisl, elementum facilisis orci a, ultrices porta purus.",
+          author: "Julia",
+          dateCreated: "Feb 29 | 3 min read",
+          image: "https://picsum.photos/400/200"
+        }
+      ]
+    };
   }
 
   render() {
@@ -60,7 +88,7 @@ class listCategory extends Component {
             item
             xs={12}
             md={6}
-            className="information1" 
+            className="information1"
             style={{ marginTop: 20 }}
           >
             <Typography
@@ -76,18 +104,25 @@ class listCategory extends Component {
           </Grid>
         </Grid>
         <Link to="/article" style={{ textDecoration: "none" }}>
-          <Grid container style={{marginBottom:40}}>
+          <Grid container style={{ marginBottom: 40 }}>
             <Grid item xs={12} md={8}>
-              <div className="popular-img-2" style={{marginBottom:10}}></div>
+              <div className="popular-img-2" style={{ marginBottom: 10 }}></div>
               <div className="popular-img-2"></div>
             </Grid>
             <Grid item xs={12} md={4}>
-              <div className="content-article3" style={{backgroundColor:"#6A0BFF", height:"290px"}}>
+              <div
+                className="content-article3"
+                style={{ backgroundColor: "#6A0BFF", height: "290px" }}
+              >
                 <div>
                   <Typography
                     variant="h4"
                     component="p"
-                    style={{ fontFamily: "Poppins", fontWeight: "bold", color:"#fff" }}
+                    style={{
+                      fontFamily: "Poppins",
+                      fontWeight: "bold",
+                      color: "#fff"
+                    }}
                     className="title1"
                   >
                     Welcome to a Refreshed OneZero
@@ -95,7 +130,11 @@ class listCategory extends Component {
                   <Typography
                     variant="h4"
                     component="p"
-                    style={{ fontFamily: "Poppins", fontWeight: "bold", color:"#fff" }}
+                    style={{
+                      fontFamily: "Poppins",
+                      fontWeight: "bold",
+                      color: "#fff"
+                    }}
                     className="title2"
                   >
                     We have a few new things to share
@@ -249,21 +288,26 @@ class listCategory extends Component {
             </Grid>
           </CardActionArea>
         </Link>
-				<Link to="/article" style={{textDecoration:"none", marginTop:30}}>
-					<CardActionArea style={{marginTop:30, marginBottom:30}}>
-						<Grid container>
-							<Grid item xs={12} md={7}>
-								<div className="bg-article1">
-									
-								</div>
-							</Grid>
-							<Grid item xs={12} md={5}>
-							<div className="content-article2" style={{backgroundColor:"#6A0BFF", height:"300px"}}>
+        <Link to="/article" style={{ textDecoration: "none", marginTop: 30 }}>
+          <CardActionArea style={{ marginTop: 30, marginBottom: 30 }}>
+            <Grid container>
+              <Grid item xs={12} md={7}>
+                <div className="bg-article1"></div>
+              </Grid>
+              <Grid item xs={12} md={5}>
+                <div
+                  className="content-article2"
+                  style={{ backgroundColor: "#6A0BFF", height: "300px" }}
+                >
                   <div>
                     <Typography
                       variant="h4"
                       component="p"
-                      style={{ fontFamily: "Poppins", fontWeight: "bold", color:"#fff" }}
+                      style={{
+                        fontFamily: "Poppins",
+                        fontWeight: "bold",
+                        color: "#fff"
+                      }}
                       className="title1"
                     >
                       Welcome to a Refreshed OneZero
@@ -271,7 +315,11 @@ class listCategory extends Component {
                     <Typography
                       variant="h4"
                       component="p"
-                      style={{ fontFamily: "Poppins", fontWeight: "bold", color:"#fff" }}
+                      style={{
+                        fontFamily: "Poppins",
+                        fontWeight: "bold",
+                        color: "#fff"
+                      }}
                       className="title2"
                     >
                       We have a few new things to share
@@ -287,7 +335,7 @@ class listCategory extends Component {
                           fontFamily: "Poppins",
                           fontWeight: "bold",
                           marginTop: 40,
-													color: "#DAF832"
+                          color: "#DAF832"
                         }}
                       >
                         John Doe
@@ -306,140 +354,94 @@ class listCategory extends Component {
                     </Typography>
                   </div>
                 </div>
-							</Grid>
-						</Grid>
-					</CardActionArea>							
-				</Link>
-				<div className="container-app">
-					<Divider style={{marginBottom:30, backgroundColor:"#6A0BFF", height:"2px", marginTop:40}}/>
-					<Link to="/article" style={{textDecoration:"none", color:"#000"}}>
-						<Grid container spacing={4}>
-							<Grid item xs={8}>
-								<Typography variant="h5" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-									How the PlayStation Took Over the World
-								</Typography>
-								<Typography variant="body1" component="p" style={{fontFamily:"Poppins", fontWeight:500, marginTop:15}}>
-									Will the strategies that have powered Sony’s success in gaming for 25 years translate to the streaming generation?
-								</Typography>		
-								<div style={{marginTop:50}}>
-									<Link to="/profile" style={{textDecoration:"none"}}>
-										<Typography variant="body2" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold", color:"#6A0BFF"}}>
-											John Doe
-										</Typography>
-									</Link>
-									<Typography variant="body2" color="textSecondary" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-										Dec 10 | 7 min read
-									</Typography>
-								</div>	
-							</Grid>
-							<Grid item xs={4}>
-								<CardMedia
-									component="img"
-									alt="Contemplative Reptile"
-									height="180"
-									image="https://placeimg.com/1000/480/any"
-									title="Contemplative Reptile"
-								/>		
-							</Grid>			
-						</Grid>
-					</Link>
-					<Divider style={{marginBottom:40, backgroundColor:"#ccc", height:"2px", marginTop:30}}/>
-					<Link to="/article" style={{textDecoration:"none", color:"#000"}}>
-						<Grid container spacing={4}>
-							<Grid item xs={8}>
-								<Typography variant="h5" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-									How the PlayStation Took Over the World
-								</Typography>
-								<Typography variant="body1" component="p" style={{fontFamily:"Poppins", fontWeight:500, marginTop:15}}>
-									Will the strategies that have powered Sony’s success in gaming for 25 years translate to the streaming generation?
-								</Typography>		
-								<div style={{marginTop:50}}>
-									<Link to="/profile" style={{textDecoration:"none"}}>
-										<Typography variant="body2" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold", color:"#6A0BFF"}}>
-											John Doe
-										</Typography>
-									</Link>
-									<Typography variant="body2" color="textSecondary" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-										Dec 10 | 7 min read
-									</Typography>
-								</div>	
-							</Grid>
-							<Grid item xs={4}>
-								<CardMedia
-									component="img"
-									alt="Contemplative Reptile"
-									height="180"
-									image="https://placeimg.com/1000/480/any"
-									title="Contemplative Reptile"
-								/>		
-							</Grid>			
-						</Grid>
-					</Link>
-					<Divider style={{marginBottom:40, backgroundColor:"#ccc", height:"2px", marginTop:30}}/>
-					<Link to="/article" style={{textDecoration:"none", color:"#000"}}>
-						<Grid container spacing={4}>
-							<Grid item xs={8}>
-								<Typography variant="h5" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-									How the PlayStation Took Over the World
-								</Typography>
-								<Typography variant="body1" component="p" style={{fontFamily:"Poppins", fontWeight:500, marginTop:15}}>
-									Will the strategies that have powered Sony’s success in gaming for 25 years translate to the streaming generation?
-								</Typography>		
-								<div style={{marginTop:50}}>
-									<Link to="/profile" style={{textDecoration:"none"}}>
-										<Typography variant="body2" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold", color:"#6A0BFF"}}>
-											John Doe
-										</Typography>
-									</Link>
-									<Typography variant="body2" color="textSecondary" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-										Dec 10 | 7 min read
-									</Typography>
-								</div>	
-							</Grid>
-							<Grid item xs={4}>
-								<CardMedia
-									component="img"
-									alt="Contemplative Reptile"
-									height="180"
-									image="https://placeimg.com/1000/480/any"
-									title="Contemplative Reptile"
-								/>		
-							</Grid>			
-						</Grid>
-					</Link>
-					<Divider style={{marginBottom:40, backgroundColor:"#ccc", height:"2px", marginTop:30}}/>
-					<Link to="/article" style={{textDecoration:"none", color:"#000"}}>
-						<Grid container spacing={4}>
-							<Grid item xs={8}>
-								<Typography variant="h5" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-									How the PlayStation Took Over the World
-								</Typography>
-								<Typography variant="body1" component="p" style={{fontFamily:"Poppins", fontWeight:500, marginTop:15}}>
-									Will the strategies that have powered Sony’s success in gaming for 25 years translate to the streaming generation?
-								</Typography>		
-								<div style={{marginTop:50}}>
-									<Link to="/profile" style={{textDecoration:"none"}}>
-										<Typography variant="body2" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold", color:"#6A0BFF"}}>
-											John Doe
-										</Typography>
-									</Link>
-									<Typography variant="body2" color="textSecondary" component="p" style={{fontFamily:"Open Sans", fontWeight:"bold"}}>
-										Dec 10 | 7 min read
-									</Typography>
-								</div>	
-							</Grid>
-							<Grid item xs={4}>
-								<CardMedia
-									component="img"
-									alt="Contemplative Reptile"
-									height="180"
-									image="https://placeimg.com/1000/480/any"
-									title="Contemplative Reptile"
-								/>		
-							</Grid>			
-						</Grid>
-					</Link>
-				</div>
+              </Grid>
+            </Grid>
+          </CardActionArea>
+        </Link>
+        <div className="container-app">
+          <Divider
+            style={{
+              marginBottom: 30,
+              backgroundColor: "#6A0BFF",
+              height: "2px",
+              marginTop: 40
+            }}
+          />
+          {this.state.article.map(cont => (
+            <div>
+              <Link
+                to="/article"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                <Grid container spacing={4}>
+                  <Grid item xs={8}>
+                    <Typography
+                      variant="h5"
+                      component="p"
+                      style={{ fontFamily: "Open Sans", fontWeight: "bold" }}
+                    >
+                      {cont.title}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      style={{
+                        fontFamily: "Poppins",
+                        fontWeight: 500,
+                        marginTop: 15
+                      }}
+                    >
+                      {cont.content}
+                    </Typography>
+                    <div style={{ marginTop: 50 }}>
+                      <Link
+                        to="/articlePerson"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          style={{
+                            fontFamily: "Open Sans",
+                            fontWeight: "bold",
+                            color: "#6A0BFF"
+                          }}
+                        >
+                          {cont.author}
+                        </Typography>
+                      </Link>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                        style={{ fontFamily: "Open Sans", fontWeight: "bold" }}
+                      >
+                        {cont.dateCreated}
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <CardMedia
+                      component="img"
+                      alt={cont.title}
+                      height="180"
+                      image={cont.image}
+                      title={cont.title}
+                    />
+                  </Grid>
+                </Grid>
+              </Link>
+              <Divider
+                style={{
+                  marginBottom: 40,
+                  backgroundColor: "#ccc",
+                  height: "2px",
+                  marginTop: 30
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
