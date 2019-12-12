@@ -68,7 +68,10 @@ class Feature extends Component {
                         Silicon Valley is indeed changing the world, and not
                         always for the better
                       </Typography>
-                      <Link to="/profile" style={{ textDecoration: "none" }}>
+                      <Link
+                        to="/articlePerson"
+                        style={{ textDecoration: "none" }}
+                      >
                         <Typography
                           variant="subtitle1"
                           component="p"
@@ -119,7 +122,10 @@ class Feature extends Component {
                     >
                       {lists.title}
                     </Typography>
-                    <Link to="/profile" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/articlePerson"
+                      style={{ textDecoration: "none" }}
+                    >
                       <Typography
                         variant="subtitle1"
                         component="p"
@@ -178,7 +184,10 @@ class Feature extends Component {
                         Silicon Valley is indeed changing the world, and not
                         always for the better
                       </Typography>
-                      <Link to="/profile" style={{ textDecoration: "none" }}>
+                      <Link
+                        to="/articlePerson"
+                        style={{ textDecoration: "none" }}
+                      >
                         <Typography
                           variant="subtitle1"
                           component="p"
