@@ -29,7 +29,7 @@ class Stories extends Component {
 										Import a story
 									</Button>
 								</Link>
-								<Link to="/import" style={{textDecoration:"none"}}>
+								<Link to="/newstory" style={{textDecoration:"none"}}>
 									<Button color="default" variant="outlined" size="small">
 										Write a story
 									</Button>

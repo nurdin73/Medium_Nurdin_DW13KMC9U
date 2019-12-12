@@ -36,26 +36,28 @@ class Popular extends Component {
         </Typography>
         <Divider style={{marginBottom: 20}} />
         {Popular.map((populars) => (
-          <Grid container spacing={2}>
-            <Grid item xs={2}>
-              <Typography variant="h4" component="p" color="textSecondary" style={{ fontFamily:"Poppins", fontWeight:"bold"}}>
-                {populars.no}
-              </Typography>
-            </Grid>
-            <Grid item xs={10}>
-              <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:5}}>
-                {populars.title}
-              </Typography>
-              <Link to="/profile" style={{textDecoration:"none"}}>
-                <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000", marginTop:5}}>
-                  {populars.author}
+          <Link to="/article" style={{textDecoration:"none"}}>
+            <Grid container spacing={2}>
+              <Grid item xs={2}>
+                <Typography variant="h4" component="p" color="textSecondary" style={{ fontFamily:"Poppins", fontWeight:"bold"}}>
+                  {populars.no}
                 </Typography>
-              </Link>
-              <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
-                {populars.dateCreated}
-              </Typography>
+              </Grid>
+              <Grid item xs={10}>
+                <Typography variant="subtitle2" component="p" style={{ fontFamily:"Poppins", fontWeight:"bold", color:"#000", lineHeight:"20px", marginBottom:5}}>
+                  {populars.title}
+                </Typography>
+                <Link to="/profile" style={{textDecoration:"none"}}>
+                  <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000", marginTop:5}}>
+                    {populars.author}
+                  </Typography>
+                </Link>
+                <Typography variant="caption" component="p" style={{fontFamily:"Poppins", color:"#000"}}>
+                  {populars.dateCreated}
+                </Typography>
+              </Grid>
             </Grid>
-          </Grid>
+          </Link>
         ))}
         <Divider style={{marginTop: 70, marginBottom:10}}/>
         {/* Menu */}

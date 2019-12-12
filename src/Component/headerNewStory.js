@@ -157,31 +157,24 @@ export default function PrimarySearchAppBar() {
               </Link>
             </Typography>
             <div className={classes.search}>
-              <form method="post" autoComplete="off">
-                <Button className={classes.searchIcon}>
-                  <SearchIcon />
-                </Button>
-                <InputBase
-                  required
-                  name="search"
-                  placeholder="Search…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput
-                  }}
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </form>
+              <Typography variant="subtitle1" component="p">
+                Draft
+              </Typography>
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton
                 aria-label="show 17 new notifications"
                 color="inherit"
+                size="small"
+                variant="contained"
               >
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
+                <Button
+                  color="default"
+                  style={{ backgroundColor: "#000", color: "#fff" }}
+                >
+                  Publish
+                </Button>
               </IconButton>
 
               <SwipeableTemporaryDrawer />

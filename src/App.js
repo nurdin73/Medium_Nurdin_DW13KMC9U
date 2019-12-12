@@ -18,6 +18,8 @@ import Comments from './Pages/Comment'
 import Profile from './Pages/Profile'
 import Bookmarks from './Pages/Bookmark'
 import Stories from './Pages/Stories'
+import NewStories from './Pages/NewStories'
+import Stats from './Pages/Stats'
 function App() {
   return (
     <Router>
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/stats">
+            <Stats />
+          </Route>
+          <Route path="/newstory">
+            <NewStories />
           </Route>
           <Route path="/stories">
             <Stories />
