@@ -21,8 +21,8 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/login">
-            <Login />
+          <Route path="/home">
+            <Home />
           </Route>
           <Route path="/register">
             <Register />
@@ -55,7 +55,7 @@ function App() {
             <Comments />
           </Route>
           <Route path="/">
-            <Home />
+            <Login />
           </Route>
         </Switch>
       </div>

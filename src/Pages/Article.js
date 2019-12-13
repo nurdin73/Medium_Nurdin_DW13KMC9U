@@ -30,19 +30,44 @@ const useStyles = makeStyles(theme => ({
 }));
 
 class Article extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Author: [
+        {
+          image: "https://source.unsplash.com/random",
+          name: "John Doe",
+          jobs: "John Doe",
+          follow: "Follow"
+        },
+        {
+          image: "https://picsum.photos/1000/1000",
+          name: "Example.com",
+          jobs: "",
+          follow: "Following"
+        }
+      ]
+    };
+  }
+
+  follow = event => {
+    event.preventDefault();
+    alert(event.target.value);
+  };
+
   render() {
-    const Author = [
-      {
-        image: "https://source.unsplash.com/random",
-        name: "John Doe",
-        jobs: "John Doe"
-      },
-      {
-        image: "https://picsum.photos/1000/1000",
-        name: "Example.com",
-        jobs: ""
-      }
-    ];
+    // const Author = [
+    //   {
+    //     image: "https://source.unsplash.com/random",
+    //     name: "John Doe",
+    //     jobs: "John Doe"
+    //   },
+    //   {
+    //     image: "https://picsum.photos/1000/1000",
+    //     name: "Example.com",
+    //     jobs: ""
+    //   }
+    // ];
     return (
       <div style={{ backgroundColor: "#ffffff" }}>
         <Header />
@@ -300,7 +325,7 @@ class Article extends Component {
               )}
             </div>
             <Divider style={{ margin: "40px 0" }} />
-            {Author.map(author => (
+            {this.state.Author.map(author => (
               <Grid container spacing={2} style={{ margin: "20px 0" }}>
                 <Grid item xs={10}>
                   <Grid container spacing={2}>
@@ -351,9 +376,21 @@ class Article extends Component {
                     alignItems: "center"
                   }}
                 >
-                  <Button variant="outlined" color="primary" size="small">
-                    Follow
-                  </Button>
+                  <form onSubmit={this.follow}>
+                    <input
+                      type="hidden"
+                      value={author.follow}
+                      onChange={this.changeData}
+                    />
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      size="small"
+                      type="submit"
+                    >
+                      {author.follow}
+                    </Button>
+                  </form>
                 </Grid>
               </Grid>
             ))}

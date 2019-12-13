@@ -10,7 +10,33 @@ import {
   Button
 } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./Home";
+const Username = localStorage.getItem("userName");
+const Pass = localStorage.getItem("password");
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "",
+      password: "",
+      message: ""
+    };
+  }
+  onChangeUsername = event => {
+    this.setState({ userName: event.target.value });
+  };
+  onChangePass = event => {
+    this.setState({ password: event.target.value });
+  };
+  onSubmit = event => {
+    event.preventDefault();
+    if (Username === this.state.userName && Pass === this.state.password) {
+      alert("Login Success");
+      window.location.href = "/home";
+    } else {
+      alert("Username or Password is wrong!");
+    }
+  };
   render() {
     return (
       <div
@@ -58,19 +84,24 @@ class Login extends Component {
                   Sign in to get personalized story recommendations, follow
                   authors and topics you love, and interact with stories.
                 </Typography>
-                <form autoComplete="off" style={{ marginBottom: 30 }} method="post">
+                <form
+                  autoComplete="off"
+                  style={{ marginBottom: 30 }}
+                  onSubmit={this.onSubmit}
+                >
                   <FormControl fullWidth style={{ marginBottom: 10 }}>
                     <InputLabel htmlFor="my-username">
                       Enter Username..
                     </InputLabel>
                     <Input
-                      name="username"
                       type="text"
                       id="my-username"
                       aria-describedby="my-helper-text-username"
+                      value={this.state.userName}
+                      onChange={this.onChangeUsername}
                     />
-                    <FormHelperText id="my-helper-text-username">
-                      Message error
+                    <FormHelperText id="my-helper-text-username" color="error">
+                      {this.state.message}
                     </FormHelperText>
                   </FormControl>
                   <FormControl fullWidth style={{ marginBottom: 10 }}>
@@ -78,18 +109,20 @@ class Login extends Component {
                       Enter Password..
                     </InputLabel>
                     <Input
-                      name="password"
                       type="password"
                       id="my-password"
                       aria-describedby="my-helper-text-password"
+                      value={this.state.password}
+                      onChange={this.onChangePass}
                     />
-                    <FormHelperText id="my-helper-text-password">
-                      Message error
+                    <FormHelperText id="my-helper-text-password" color="error">
+                      {this.state.message}
                     </FormHelperText>
                   </FormControl>
                   <Button
                     color="inherit"
                     variant="contained"
+                    type="submit"
                     style={{
                       width: 200,
                       backgroundColor: "#000",

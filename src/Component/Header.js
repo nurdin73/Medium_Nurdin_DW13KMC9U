@@ -152,7 +152,10 @@ export default function PrimarySearchAppBar() {
         <div className="container-app">
           <Toolbar>
             <Typography className={classes.title} variant="h6" noWrap>
-              <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
+              <Link
+                to="/home"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
                 Medium
               </Link>
             </Typography>
