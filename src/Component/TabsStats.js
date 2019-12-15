@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Chart from "./Chart";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,45 +59,60 @@ export default function SimpleTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
+          indicatorColor="primary"
+          variant="fullWidth"
+          textColor="primary"
           aria-label="simple tabs example"
+          style={{ marginTop: "20px", color: "#ccc" }}
         >
           <Tab
             label="Views (30 days)"
             icon={
-              <Typography variant="h4" component="p">
+              <Typography variant="h3" component="p">
                 0
               </Typography>
             }
             {...a11yProps(0)}
+            style={{
+              borderRight: "1px solid #ccc",
+              borderBottom: "1px solid #ccc"
+            }}
           />
           <Tab
             label="Reads (30 days)"
             icon={
-              <Typography variant="h4" component="p">
+              <Typography variant="h3" component="p">
                 0
               </Typography>
             }
             {...a11yProps(1)}
+            style={{
+              borderRight: "1px solid #ccc",
+              borderBottom: "1px solid #ccc"
+            }}
           />
           <Tab
             label="Fans (30 days)"
             icon={
-              <Typography variant="h4" component="p">
+              <Typography variant="h3" component="p">
                 0
               </Typography>
             }
             {...a11yProps(2)}
+            style={{
+              borderBottom: "1px solid #ccc"
+            }}
           />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0} style={{ height: "320px" }}>
-        Item One
+      <TabPanel value={value} index={0}>
+        <Chart />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <Chart />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Chart />
       </TabPanel>
     </div>
   );
