@@ -1,28 +1,28 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import {} from "@material-ui/core";
-import {} from "@material-ui/icons";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Register from "./Pages/Register";
-import Login from "./Pages/Login";
-import Home from "./Pages/Home";
-import Article from "./Pages/Article";
-import Category from "./Pages/Category-page";
-import Comments from "./Pages/Comment";
-import Profile from "./Pages/Profile";
-import Bookmarks from "./Pages/Bookmark";
-import Stories from "./Pages/Stories";
-import NewStories from "./Pages/NewStories";
-import Stats from "./Pages/Stats";
-import ArticlePerson from "./Pages/articlePerson";
-function App() {
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import '@material-ui/core';
+import '@material-ui/icons';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Register from './Pages/Register/Register';
+import Login from './Pages/Login/Login';
+import Home from './Pages/Home/Home';
+import Article from './Pages/Article';
+import Category from './Pages/Category-page';
+import Comments from './Pages/Comment';
+import Profile from './Pages/Profile';
+import Bookmarks from './Pages/Bookmark';
+import Stories from './Pages/Stories';
+import NewStories from './Pages/NewStories';
+import Stats from './Pages/Stats';
+import ArticlePerson from './Pages/articlePerson';
+function App () {
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/home">
-            <Home />
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/register">
             <Register />
@@ -55,7 +55,7 @@ function App() {
             <Comments />
           </Route>
           <Route path="/">
-            <Login />
+            <Home />
           </Route>
         </Switch>
       </div>

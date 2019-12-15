@@ -180,7 +180,7 @@ class Register extends Component {
                 >
                   Already have account?{" "}
                   <Link
-                    to="/"
+                    to="/login"
                     style={{
                       color: "rgb(2, 158, 116)",
                       textDecoration: "none"

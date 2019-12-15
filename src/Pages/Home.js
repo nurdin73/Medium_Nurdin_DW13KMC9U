@@ -8,6 +8,14 @@ import { Container, Grid, Typography, Divider } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../App.css";
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    if (localStorage.getItem("isLogin") !== "1") {
+      alert("You must login");
+      window.location.href = "/";
+    }
+  }
+
   render() {
     return (
       <div>
@@ -48,7 +56,7 @@ class Home extends Component {
               <Popular />
             </Grid>
           </Grid>
-        </div>        
+        </div>
       </div>
     );
   }

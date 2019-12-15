@@ -35,7 +35,7 @@
   color: #fff;
   outline: none;
 }
- 
+
 .scroll-menu-arrow {
   padding: 20px;
   cursor: pointer;
@@ -84,25 +84,25 @@
   margin: auto;
 }
 .popular-img {
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url("https://source.unsplash.com/random");
   background-size: cover;
   height: 160px;
   background-position: center;
 }
 .popular-img-1 {
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url("https://source.unsplash.com/random");
   background-size: cover;
   height: 100px;
   background-position: center;
 }
 .popular-img-2 {
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url("https://source.unsplash.com/random");
   background-size: cover;
   height: 140px;
   background-position: center;
 }
 .popular-img-2 {
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url("https://source.unsplash.com/random");
   background-size: cover;
   height: 160px;
   background-position: center;
@@ -157,7 +157,7 @@
   font-size: 26px !important;
 }
 .bg-article {
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url("https://source.unsplash.com/random");
   height: 354px;
   background-size: cover;
   display: flex;
@@ -166,7 +166,7 @@
   padding: 20px;
 }
 .bg-article1 {
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url("https://source.unsplash.com/random");
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -216,7 +216,7 @@
   margin-bottom: 30px !important;
 }
 .author-article {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 .information1 {
   display: none;
@@ -226,7 +226,7 @@
   display: block;
 }
 .related-img {
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url("https://source.unsplash.com/random");
   background-size: cover;
   height: 300px;
   background-position: center;

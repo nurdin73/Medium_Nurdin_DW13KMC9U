@@ -9,8 +9,8 @@ import {
   FormHelperText,
   Button
 } from "@material-ui/core";
+import "./Login.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./Home";
 const Username = localStorage.getItem("userName");
 const Pass = localStorage.getItem("password");
 class Login extends Component {
@@ -40,47 +40,18 @@ class Login extends Component {
   };
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          backgroundColor: "#e0e0e0"
-        }}
-      >
+      <div className="Login">
         <Grid item xs={11} md={9}>
           <Paper style={{ padding: 40, textAlign: "center" }}>
-            <Grid
-              container
-              spacing={1}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <Grid container spacing={1} className="d-flex">
               <Grid item xs={12} md={6}>
-                <Typography
-                  variant="h5"
-                  component="p"
-                  style={{
-                    fontFamily: "Gupter",
-                    fontWeight: 400,
-                    fontSize: 36
-                  }}
-                >
+                <Typography variant="h5" component="p" className="title-bold">
                   Welcome Back
                 </Typography>
                 <Typography
                   variant="caption"
                   component="p"
-                  style={{
-                    fontWeight: 300,
-                    fontSize: 14,
-                    color: "#9e9e9e",
-                    marginBottom: 20
-                  }}
+                  className="subtitle"
                 >
                   Sign in to get personalized story recommendations, follow
                   authors and topics you love, and interact with stories.
@@ -124,11 +95,7 @@ class Login extends Component {
                     color="inherit"
                     variant="contained"
                     type="submit"
-                    style={{
-                      width: 200,
-                      backgroundColor: "#000",
-                      color: "#fff"
-                    }}
+                    className="btn-black"
                   >
                     Login
                   </Button>
@@ -136,28 +103,17 @@ class Login extends Component {
                 <Typography
                   variant="subtitle1"
                   component="h1"
-                  style={{ fontWeight: "bold" }}
+                  className="text-bold"
                 >
                   Don't have account?{" "}
-                  <Link
-                    to="/register"
-                    style={{
-                      color: "rgb(2, 158, 116)",
-                      textDecoration: "none"
-                    }}
-                  >
+                  <Link to="/register" className="text-success">
                     Sign Up
                   </Link>
                 </Typography>
                 <Typography
                   variant="caption"
                   component="p"
-                  style={{
-                    fontWeight: 300,
-                    fontSize: 14,
-                    color: "#9e9e9e",
-                    marginBottom: 20
-                  }}
+                  className="subtitle"
                 >
                   To make Medium work, we log user data and share it with
                   service providers. Click “Sign Up” above to accept Medium’s

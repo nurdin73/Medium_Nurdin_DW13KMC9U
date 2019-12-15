@@ -153,7 +153,7 @@ export default function PrimarySearchAppBar() {
           <Toolbar>
             <Typography className={classes.title} variant="h6" noWrap>
               <Link
-                to="/home"
+                to="/"
                 style={{ textDecoration: "none", color: "#000" }}
               >
                 Medium

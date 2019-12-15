@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Component/Header";
 import { Grid, Typography, Divider } from "@material-ui/core";
+import Tabs from "../Component/TabsStats";
+import Tabs2 from "../Component/TabsStats2";
 class Stats extends Component {
   constructor(props) {
     super(props);
@@ -67,11 +69,8 @@ class Stats extends Component {
               </Link>
             </div>
             <Divider />
-            <Grid container style={{ marginTop: "20px" }}>
-              <Grid item xs={4}>
-                <Link></Link>
-              </Grid>
-            </Grid>
+            <Tabs />
+            <Tabs2 />
           </Grid>
         </div>
       </div>

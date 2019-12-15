@@ -9,19 +9,21 @@ import {
   FormHelperText,
   Button
 } from "@material-ui/core";
+import "./Register.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./Home";
-const Username = localStorage.getItem("userName");
-const Pass = localStorage.getItem("password");
-class Login extends Component {
+class Register extends Component {
+  userData;
   constructor(props) {
     super(props);
     this.state = {
+      fullName: "",
       userName: "",
-      password: "",
-      message: ""
+      password: ""
     };
   }
+  onChangeName = event => {
+    this.setState({ fullName: event.target.value });
+  };
   onChangeUsername = event => {
     this.setState({ userName: event.target.value });
   };
@@ -30,60 +32,33 @@ class Login extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    if (Username === this.state.userName && Pass === this.state.password) {
-      localStorage.setItem("isLogin", 1);
-      alert("Login Success");
-      window.location.href = "/home";
-    } else {
-      alert("Username or Password is wrong!");
-    }
+    localStorage.setItem("fullName", this.state.fullName);
+    localStorage.setItem("userName", this.state.userName);
+    localStorage.setItem("password", this.state.password);
+    this.setState({
+      fullName: "",
+      userName: "",
+      password: ""
+    });
   };
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          backgroundColor: "#e0e0e0"
-        }}
-      >
-        <Grid item xs={11} md={9}>
+      <div className="Register">
+        <Grid item xs={12} md={9}>
           <Paper style={{ padding: 40, textAlign: "center" }}>
-            <Grid
-              container
-              spacing={1}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+            <Grid container spacing={1} className="d-flex">
               <Grid item xs={12} md={6}>
-                <Typography
-                  variant="h5"
-                  component="p"
-                  style={{
-                    fontFamily: "Gupter",
-                    fontWeight: 400,
-                    fontSize: 36
-                  }}
-                >
-                  Welcome Back
+                <Typography variant="h5" component="p" className="title-bold">
+                  Join Medium
                 </Typography>
                 <Typography
                   variant="caption"
                   component="p"
-                  style={{
-                    fontWeight: 300,
-                    fontSize: 14,
-                    color: "#9e9e9e",
-                    marginBottom: 20
-                  }}
+                  className="subtitle"
                 >
-                  Sign in to get personalized story recommendations, follow
-                  authors and topics you love, and interact with stories.
+                  Create an account to receive great stories in your inbox,
+                  personalize your homepage, and follow authors and topics that
+                  you love.
                 </Typography>
                 <form
                   autoComplete="off"
@@ -91,73 +66,70 @@ class Login extends Component {
                   onSubmit={this.onSubmit}
                 >
                   <FormControl fullWidth style={{ marginBottom: 10 }}>
+                    <InputLabel htmlFor="my-fullname">
+                      Enter Fullname..
+                    </InputLabel>
+                    <Input
+                      name="fullname"
+                      type="text"
+                      id="my-fullname"
+                      value={this.state.fullName}
+                      onChange={this.onChangeName}
+                      aria-describedby="my-helper-text-fullname"
+                    />
+                    <FormHelperText id="my-helper-text-fullname"></FormHelperText>
+                  </FormControl>
+                  <FormControl fullWidth style={{ marginBottom: 10 }}>
                     <InputLabel htmlFor="my-username">
                       Enter Username..
                     </InputLabel>
                     <Input
+                      name="username"
                       type="text"
                       id="my-username"
                       aria-describedby="my-helper-text-username"
                       value={this.state.userName}
                       onChange={this.onChangeUsername}
                     />
-                    <FormHelperText id="my-helper-text-username" color="error">
-                      {this.state.message}
-                    </FormHelperText>
+                    <FormHelperText id="my-helper-text-username"></FormHelperText>
                   </FormControl>
                   <FormControl fullWidth style={{ marginBottom: 10 }}>
                     <InputLabel htmlFor="my-password">
                       Enter Password..
                     </InputLabel>
                     <Input
+                      name="password"
                       type="password"
                       id="my-password"
                       aria-describedby="my-helper-text-password"
                       value={this.state.password}
                       onChange={this.onChangePass}
                     />
-                    <FormHelperText id="my-helper-text-password" color="error">
-                      {this.state.message}
-                    </FormHelperText>
+                    <FormHelperText id="my-helper-text-password"></FormHelperText>
                   </FormControl>
                   <Button
                     color="inherit"
                     variant="contained"
                     type="submit"
-                    style={{
-                      width: 200,
-                      backgroundColor: "#000",
-                      color: "#fff"
-                    }}
+                    className="btn-black"
                   >
-                    Login
+                    Register
                   </Button>
                 </form>
                 <Typography
                   variant="subtitle1"
                   component="h1"
-                  style={{ fontWeight: "bold" }}
+                  className="text-bold"
                 >
-                  Don't have account?{" "}
-                  <Link
-                    to="/register"
-                    style={{
-                      color: "rgb(2, 158, 116)",
-                      textDecoration: "none"
-                    }}
-                  >
-                    Sign Up
+                  Already have account?{" "}
+                  <Link to="/login" className="text-success">
+                    Sign In
                   </Link>
                 </Typography>
                 <Typography
                   variant="caption"
                   component="p"
-                  style={{
-                    fontWeight: 300,
-                    fontSize: 14,
-                    color: "#9e9e9e",
-                    marginBottom: 20
-                  }}
+                  className="subtitle"
                 >
                   To make Medium work, we log user data and share it with
                   service providers. Click “Sign Up” above to accept Medium’s
@@ -172,4 +144,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
