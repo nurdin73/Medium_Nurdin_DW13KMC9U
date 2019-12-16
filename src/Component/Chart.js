@@ -11,14 +11,24 @@ class App extends Component {
           id: "basic-bar",
           toolbar: {
             show: false
+          },
+          zoom: {
+            enabled: true,
+            type: "x",
+            resetIcon: {
+              offsetX: -10,
+              offsetY: 0,
+              fillColor: "#fff",
+              strokeColor: "#37474F"
+            },
+            selection: {
+              background: "#90CAF9",
+              border: "#0D47A1"
+            }
           }
         },
         plotOptions: {
-          bar: {
-            name: {
-              show: false
-            }
-          }
+          bar: {}
         },
         dataLabels: {
           enabled: false
@@ -38,12 +48,10 @@ class App extends Component {
             hideOverlappingLabels: true,
             showDuplicates: true,
             trim: true
-          },
-          type: "category",
-          tickAmount: 4,
-          min: 3,
-          max: 4,
-          range: undefined
+          }
+        },
+        fill: {
+          colors: ["#2e7d32"]
         },
         yaxis: {}
       },
