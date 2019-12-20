@@ -27,7 +27,7 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/articlePerson">
+          <Route path={`/:username/articles`}>
             <ArticlePerson />
           </Route>
           <Route path="/stats">
@@ -45,10 +45,10 @@ function App() {
           <Route path="/profile">
             <Profile />
           </Route>
-          <Route path="/article">
+          <Route path="/article/:title">
             <Article />
           </Route>
-          <Route path="/category">
+          <Route path="/category/:name/articles">
             <Category />
           </Route>
           <Route path="/comment">

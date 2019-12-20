@@ -10,47 +10,44 @@ import {
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Bookmark, BookmarkBorderOutlined } from "@material-ui/icons";
 import "../App.css";
+import Axios from "axios";
+
 class Article extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: []
+    };
+  }
+
+  componentDidMount() {
+    Axios.get(`http://localhost:5000/api/v1/articles`).then(res => {
+      const result = res.data;
+      this.setState({ result: result });
+      console.log(res.data);
+    });
+  }
+
   render() {
-    const listPopular = [
-      {
-        image: "https://source.unsplash.com/random",
-        title:
-          "The Away Luggage Saga Shows Venture Capital Needs a Reality Check",
-        content:
-          "With Google’s founders withdrawing from management duties, here’s how the partnership that would organize the world’s information began",
-        author: "John Doe",
-        dateCreated: "Dec 7 | 16 minutes read"
-      },
-      {
-        image: "https://placeimg.com/640/480/any",
-        title: "The Away Luggage Saga Shows",
-        content: "With Google’s founders withdrawing from management duties",
-        author: "Frank",
-        dateCreated: "Nov 19 | 26 minutes read"
-      },
-      {
-        image: "https://picsum.photos/700/500",
-        title: "Venture Capital Needs a Reality Check",
-        content:
-          "From management duties, here’s how the partnership that would organize the world’s information began",
-        author: "Lisa",
-        dateCreated: "Apr 1 | 19 minutes read"
-      }
-    ];
+    const url = "/articles";
+    const url1 = "/article/";
     return (
       <div>
-        {listPopular.map(popular => (
-          <Grid container spacing={4}>
+        {this.state.result.map(articles => (
+          <Grid container spacing={4} style={{ marginBottom: "20px" }}>
             <Grid item xs={9}>
               <Typography
                 variant="subtitle2"
                 color="textSecondary"
                 component="p"
+                style={{ textTransform: "uppercase" }}
               >
-                BASED ON YOUR READING HISTORY
+                {articles.category.name}
               </Typography>
-              <Link to="/article" style={{ textDecoration: "none" }}>
+              <Link
+                to={url1 + articles.title}
+                style={{ textDecoration: "none" }}
+              >
                 <Typography
                   variant="subtitle1"
                   component="p"
@@ -62,7 +59,7 @@ class Article extends Component {
                     marginBottom: 15
                   }}
                 >
-                  {popular.title}
+                  {articles.title}
                 </Typography>
                 <Typography
                   variant="caption"
@@ -70,12 +67,15 @@ class Article extends Component {
                   style={{ fontFamily: "Poppins", fontWeight: "bold" }}
                   color="textSecondary"
                 >
-                  {popular.content}
+                  {articles.content.substr(0, 200)}...
                 </Typography>
               </Link>
               <Grid container spacing={2}>
                 <Grid item xs={9}>
-                  <Link to="/articlePerson" style={{ textDecoration: "none" }}>
+                  <Link
+                    to={articles.user.username + url}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       variant="subtitle1"
                       component="p"
@@ -86,7 +86,7 @@ class Article extends Component {
                         fontWeight: "bold"
                       }}
                     >
-                      {popular.author}
+                      {articles.user.username}
                     </Typography>
                   </Link>
                   <Typography
@@ -94,7 +94,7 @@ class Article extends Component {
                     component="p"
                     style={{ fontFamily: "Poppins", color: "#000" }}
                   >
-                    {popular.dateCreated}
+                    {articles.dateCreated}
                   </Typography>
                 </Grid>
                 <Grid item xs={3}>
@@ -105,7 +105,7 @@ class Article extends Component {
             <Grid item xs={3}>
               <div
                 className="popular-img-2"
-                style={{ backgroundImage: `url(${popular.image})` }}
+                style={{ backgroundImage: `url(${articles.image})` }}
               ></div>
             </Grid>
           </Grid>

@@ -2,29 +2,24 @@ import React, { Component } from "react";
 import { Divider, Typography, Paper, CardMedia, Grid } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../App.css";
+import Axios from "axios";
 class Popular extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: []
+    };
+  }
+
+  componentDidMount() {
+    Axios.get(`http://localhost:5000/api/v1/article/latest`).then(res => {
+      const result = res.data;
+      this.setState({ result: result });
+    });
+  }
+
   render() {
-    const Popular = [
-      {
-        no: "01",
-        title:
-          "The Away Luggage Saga Shows Venture Capital Needs a Reality Check",
-        author: "John Doe",
-        dateCreated: "Dec 7 | 16 minutes read"
-      },
-      {
-        no: "02",
-        title: "The Away Luggage Saga Shows Venture",
-        author: "Yulia",
-        dateCreated: "Dec 11 | 03 minutes read"
-      },
-      {
-        no: "03",
-        title: "Venture Capital Needs a Reality Check",
-        author: "Frank",
-        dateCreated: "Nov 3 | 33 minutes read"
-      }
-    ];
+    var no = 1;
     return (
       <div>
         <Typography
@@ -36,7 +31,7 @@ class Popular extends Component {
           Popular on medium
         </Typography>
         <Divider style={{ marginBottom: 20 }} />
-        {Popular.map(populars => (
+        {this.state.result.map(populars => (
           <Link to="/article" style={{ textDecoration: "none" }}>
             <Grid container spacing={2}>
               <Grid item xs={2}>
@@ -46,7 +41,7 @@ class Popular extends Component {
                   color="textSecondary"
                   style={{ fontFamily: "Poppins", fontWeight: "bold" }}
                 >
-                  {populars.no}
+                  0{no++}
                 </Typography>
               </Grid>
               <Grid item xs={10}>
@@ -61,7 +56,7 @@ class Popular extends Component {
                     marginBottom: 5
                   }}
                 >
-                  {populars.title}
+                  {populars.title.substr(0, 30)}...
                 </Typography>
                 <Link to="/articlePerson" style={{ textDecoration: "none" }}>
                   <Typography
@@ -73,7 +68,7 @@ class Popular extends Component {
                       marginTop: 5
                     }}
                   >
-                    {populars.author}
+                    {populars.user.username}
                   </Typography>
                 </Link>
                 <Typography
@@ -81,7 +76,7 @@ class Popular extends Component {
                   component="p"
                   style={{ fontFamily: "Poppins", color: "#000" }}
                 >
-                  {populars.dateCreated}
+                  {/* {populars.dateCreated} */}
                 </Typography>
               </Grid>
             </Grid>

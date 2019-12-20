@@ -11,10 +11,13 @@ import {
   Container
 } from "@material-ui/core";
 import "../App.css";
+import Axios from "axios";
+import { withRouter } from "react-router";
 class listCategory extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      articles: [],
       article: [
         {
           title:
@@ -43,6 +46,16 @@ class listCategory extends Component {
         }
       ]
     };
+  }
+
+  componentDidMount() {
+    const { match } = this.props;
+    Axios.get(
+      `http://localhost:5000/api/v1/category/${match.params.name}/articles`
+    ).then(res => {
+      const result = res.data;
+      this.setState({ articles: result });
+    });
   }
 
   render() {
@@ -367,7 +380,7 @@ class listCategory extends Component {
               marginTop: 40
             }}
           />
-          {this.state.article.map(cont => (
+          {this.state.articles.map(cont => (
             <div>
               <Link
                 to="/article"
@@ -391,7 +404,7 @@ class listCategory extends Component {
                         marginTop: 15
                       }}
                     >
-                      {cont.content}
+                      {cont.content.substr(0, 120)}...
                     </Typography>
                     <div style={{ marginTop: 50 }}>
                       <Link
@@ -407,7 +420,7 @@ class listCategory extends Component {
                             color: "#6A0BFF"
                           }}
                         >
-                          {cont.author}
+                          {cont.user}
                         </Typography>
                       </Link>
                       <Typography
@@ -447,4 +460,4 @@ class listCategory extends Component {
   }
 }
 
-export default listCategory;
+export default withRouter(listCategory);

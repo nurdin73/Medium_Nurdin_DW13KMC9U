@@ -5,12 +5,9 @@ import { Grid, Typography, Avatar, Button } from "@material-ui/core";
 import Links from "@material-ui/core/Link";
 import { Twitter } from "@material-ui/icons";
 import Tabs from "../Component/TabsProfile";
+import { withRouter } from "react-router";
+import Axios from "axios";
 class articlePerson extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { variable: 0 };
-  }
-
   render() {
     return (
       <div>
@@ -41,7 +38,7 @@ class articlePerson extends Component {
                       marginRight: 20
                     }}
                   >
-                    John Doe
+                    Author
                   </Typography>
                   <Link to="/profile" style={{ textDecoration: "none" }}>
                     <Button variant="outlined" size="small" color="primary">
