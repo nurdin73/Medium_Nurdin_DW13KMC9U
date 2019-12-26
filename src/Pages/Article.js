@@ -76,6 +76,8 @@ class Article extends Component {
     //     jobs: ""
     //   }
     // ];
+    const url = "/articles";
+    const url1 = "/article/";
     return (
       <div style={{ backgroundColor: "#ffffff" }}>
         <Header />
@@ -111,7 +113,7 @@ class Article extends Component {
                 </Avatar>
                 <div>
                   <Link
-                    to="/articlePerson"
+                    to={"/" + this.state.Article.username + url}
                     style={{
                       fontFamily: "Roboto Condensed",
                       color: "#000",

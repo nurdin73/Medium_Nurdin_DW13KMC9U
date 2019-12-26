@@ -6,6 +6,7 @@ import { Star, Favorite, BookmarkBorderOutlined } from "@material-ui/icons";
 import "../App.css";
 import Axios from "axios";
 import { withRouter } from "react-router";
+import slugify from "slugify";
 
 class ArticleData extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class ArticleData extends Component {
   componentDidMount() {
     const { match } = this.props;
     Axios.get(
-      `https://medium-server.herokuapp.com/api/v1/user/${match.params.username}/articles`
+      `http://localhost:5000/api/v1/user/${match.params.username}/articles`
     ).then(res => {
       const result = res.data;
       this.setState({ result: result });
@@ -50,7 +51,7 @@ class ArticleData extends Component {
                 <Avatar style={{ marginRight: 10 }}>{ap.user[0]}</Avatar>
                 <div>
                   <Link
-                    to="/articlePerson"
+                    to={"/" + ap.username + "/articles"}
                     style={{
                       fontFamily: "Roboto Condensed",
                       color: "#000",
@@ -73,7 +74,10 @@ class ArticleData extends Component {
                 <Star />
               </Typography>
             </div>
-            <Link to="/article" style={{ textDecoration: "none" }}>
+            <Link
+              to={"/article/" + slugify(ap.title, { lower: true })}
+              style={{ textDecoration: "none" }}
+            >
               <div
                 className="bg-article"
                 style={{

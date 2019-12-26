@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -28,6 +28,7 @@ import {
 } from "@material-ui/core";
 import "../App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -134,6 +135,7 @@ export default function PrimarySearchAppBar() {
     bottom: false,
     right: false
   });
+
   const toggleDrawer = (side, open) => event => {
     if (
       event &&
@@ -186,12 +188,35 @@ export default function PrimarySearchAppBar() {
   );
 }
 function SwipeableTemporaryDrawer() {
+  const token = localStorage.getItem("token");
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
     left: false,
     bottom: false,
     right: false
+  });
+
+  const [data, setData] = React.useState({
+    profile: []
+  });
+
+  const API = `http://localhost:5000/api/v1/profile`;
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await Axios({
+        method: "get",
+        url: API,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      setData({ profile: result.data });
+    }
+    fetchData();
   });
 
   const toggleDrawer = (side, open) => event => {
@@ -223,7 +248,7 @@ function SwipeableTemporaryDrawer() {
         <Avatar
           style={{ marginRight: 10, backgroundColor: "rgb(46, 125, 50)" }}
         >
-          B
+          {data.profile.initial}
         </Avatar>
         <div>
           <Link
@@ -235,7 +260,7 @@ function SwipeableTemporaryDrawer() {
               fontSize: 16
             }}
           >
-            John Doe
+            {data.profile.fullname}
           </Link>
           <Typography
             variant="caption"
@@ -243,7 +268,7 @@ function SwipeableTemporaryDrawer() {
             style={{ fontFamily: "Poppins", fontWeight: "bold" }}
             color="textSecondary"
           >
-            @johndoe
+            {data.profile.username}
           </Typography>
         </div>
       </div>
@@ -292,7 +317,7 @@ function SwipeableTemporaryDrawer() {
           src="/broken-image.jpg"
           style={{ backgroundColor: "#2e7d32" }}
         >
-          B
+          {data.profile.initial}
         </Avatar>
       </IconButton>
       <SwipeableDrawer

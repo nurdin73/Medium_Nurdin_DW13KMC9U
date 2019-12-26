@@ -47,7 +47,7 @@ class Article extends Component {
                 {articles.category.name}
               </Typography>
               <Link
-                to={url1 + slugify(articles.title)}
+                to={url1 + slugify(articles.title, { lower: true })}
                 style={{ textDecoration: "none" }}
               >
                 <Typography

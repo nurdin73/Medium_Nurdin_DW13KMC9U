@@ -12,6 +12,7 @@ import "../App.css";
 import { Link, withRouter } from "react-router-dom";
 import { FavoriteBorderOutlined, BookmarkBorder } from "@material-ui/icons";
 import Axios from "axios";
+import slugify from "slugify";
 class RelatedArticle extends Component {
   constructor(props) {
     super(props);
@@ -38,13 +39,16 @@ class RelatedArticle extends Component {
           <Grid container spacing={4}>
             {this.state.related.map(relatedPost => (
               <Grid item xs={12} md={4}>
-                <Link to="/article" style={{ textDecoration: "none" }}>
+                <Link
+                  to={"/article/" + slugify(relatedPost.title, { lower: true })}
+                  style={{ textDecoration: "none" }}
+                >
                   <Typography
                     variant="subtitle2"
                     component="p"
                     color="textSecondary"
                   >
-                    More from P.S. I Love You
+                    More from {relatedPost.category.name}
                   </Typography>
                   <div
                     className="related-img"
@@ -75,7 +79,7 @@ class RelatedArticle extends Component {
                     </Avatar>
                     <div>
                       <Link
-                        to="/profile"
+                        to={"/" + relatedPost.user.username + "/articles"}
                         style={{
                           fontFamily: "Roboto Condensed",
                           color: "#000",

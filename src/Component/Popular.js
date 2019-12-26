@@ -3,6 +3,7 @@ import { Divider, Typography, Paper, CardMedia, Grid } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../App.css";
 import Axios from "axios";
+import slugify from "slugify";
 class Popular extends Component {
   constructor(props) {
     super(props);
@@ -12,17 +13,17 @@ class Popular extends Component {
   }
 
   componentDidMount() {
-    Axios.get(`https://medium-server.herokuapp.com/api/v1/article/latest`).then(
-      res => {
-        const result = res.data;
-        console.log(result);
-        this.setState({ result: result });
-      }
-    );
+    Axios.get(`http://localhost:5000/api/v1/articles/latest`).then(res => {
+      const result = res.data;
+      console.log(result);
+      this.setState({ result: result });
+    });
   }
 
   render() {
     var no = 1;
+    const url = "/articles";
+    const url1 = "/article/";
     return (
       <div>
         <Typography
@@ -34,9 +35,12 @@ class Popular extends Component {
           Popular on medium
         </Typography>
         <Divider style={{ marginBottom: 20 }} />
-        {/* {this.state.result.map(populars => {
+        {this.state.result.map(populars => {
           return (
-            <Link to="/article" style={{ textDecoration: "none" }}>
+            <Link
+              to={slugify(populars.title, { lower: true })}
+              style={{ textDecoration: "none" }}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={2}>
                   <Typography
@@ -62,7 +66,10 @@ class Popular extends Component {
                   >
                     {populars.title.substr(0, 30)}...
                   </Typography>
-                  <Link to="/articlePerson" style={{ textDecoration: "none" }}>
+                  <Link
+                    to={populars.user.username + url}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       variant="caption"
                       component="p"
@@ -84,7 +91,7 @@ class Popular extends Component {
               </Grid>
             </Link>
           );
-        })} */}
+        })}
         <Divider style={{ marginTop: 70, marginBottom: 10 }} />
         {/* Menu */}
       </div>

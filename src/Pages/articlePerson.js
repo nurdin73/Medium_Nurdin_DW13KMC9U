@@ -8,6 +8,22 @@ import Tabs from "../Component/TabsProfile";
 import { withRouter } from "react-router";
 import Axios from "axios";
 class articlePerson extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      result: []
+    };
+  }
+
+  componentDidMount() {
+    const { match } = this.props;
+    Axios.get(
+      `http://localhost:5000/api/v1/user/${match.params.username}`
+    ).then(res => {
+      const result = res.data;
+      this.setState({ result: result });
+    });
+  }
   render() {
     return (
       <div>
@@ -38,7 +54,7 @@ class articlePerson extends Component {
                       marginRight: 20
                     }}
                   >
-                    Author
+                    {this.state.result.fullname}
                   </Typography>
                   <Link to="/profile" style={{ textDecoration: "none" }}>
                     <Button variant="outlined" size="small" color="primary">
@@ -100,4 +116,4 @@ class articlePerson extends Component {
   }
 }
 
-export default articlePerson;
+export default withRouter(articlePerson);
