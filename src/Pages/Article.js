@@ -17,6 +17,7 @@ import {
 } from "@material-ui/core";
 import Header from "../Component/Header";
 import Axios from "axios";
+import slugify from "slugify";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -77,7 +78,7 @@ class Article extends Component {
     //   }
     // ];
     const url = "/articles";
-    const url1 = "/article/";
+
     return (
       <div style={{ backgroundColor: "#ffffff" }}>
         <Header />
@@ -313,7 +314,10 @@ class Article extends Component {
             <Grid container>
               <Grid item xs={12}>
                 <div style={{ display: "block" }}>
-                  <Link to="/comment" style={{ textDecoration: "none" }}>
+                  <Link
+                    to={"/comment/" + this.state.Article.slug}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button
                       variant="outlined"
                       color="primary"

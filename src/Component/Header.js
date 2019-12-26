@@ -211,7 +211,7 @@ function SwipeableTemporaryDrawer() {
   const API = `http://localhost:5000/api/v1/profile`;
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       const result = await Axios({
         method: "get",
         url: API,
@@ -219,11 +219,10 @@ function SwipeableTemporaryDrawer() {
           Authorization: `Bearer ${token}`
         }
       });
-
       setData({ profile: result.data });
-    }
+    };
     fetchData();
-  });
+  }, []);
   const toggleDrawer = (side, open) => event => {
     if (
       event &&

@@ -7,38 +7,78 @@ import {
   Paper,
   Avatar,
   TextField,
-  Button
+  Button,
+  Snackbar
 } from "@material-ui/core";
 import Links from "@material-ui/core/Link";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Favorite, ExpandMore, BookOutlined } from "@material-ui/icons";
+import Axios from "axios";
+import slugify from "slugify";
+
+const token = localStorage.getItem("token");
 class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      add: "",
-      data: []
+      slug: "",
+      comment: "",
+      message: "",
+      comments: []
     };
   }
 
+  componentDidMount() {
+    const { match } = this.props;
+
+    const slug = slugify(match.params.title, " ");
+    Axios({
+      method: "get",
+      url: `http://localhost:5000/api/v1/article/${match.params.title}/comments`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      console.log(res.data);
+      this.setState({ comments: res.data, slug: slug });
+    });
+  }
+
   onChange = event => {
-    this.setState({ add: event.target.value });
+    this.setState({ comment: event.target.value });
   };
   onSubmit = event => {
-    this.setState({
-      add: "",
-      data: [...this.state.data, this.state.add]
+    const { match } = this.props;
+
+    // add comment
+    Axios({
+      method: "get",
+      url: `http://localhost:5000/api/v1/article/${match.params.title}`
+    }).then(article => {
+      const id = article.data.id;
+      Axios({
+        method: "post",
+        url: "http://localhost:5000/api/v1/comment",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        data: {
+          article_id: id,
+          comment: this.state.comment
+        }
+      }).then(res => {
+        this.setState({ message: "comment was added" });
+        alert(this.state.message);
+      });
     });
   };
   addData = event => {
-    if (event.keyCode == 13) {
-      if (document.getElementById("outlined-textarea").value !== "") {
-        this.onSubmit();
-        document.getElementById("outlined-textarea").value = "";
-      }
+    if (event.keyCode === 13) {
+      this.onSubmit();
     }
   };
   render() {
+    // console.log(this.state.comment);
     return (
       <div className="bg-comment">
         <Header />
@@ -83,8 +123,7 @@ class Comment extends Component {
                         color: "#000"
                       }}
                     >
-                      Progressive Web Apps with PokeAPI and Deploy using
-                      Firebase
+                      {this.state.slug}
                     </Typography>
                     <Typography
                       variant="caption"
@@ -170,7 +209,7 @@ class Comment extends Component {
                       multiline
                       variant="outlined"
                       fullWidth={true}
-                      value={this.state.add}
+                      value={this.state.comment}
                       onChange={this.onChange}
                       onKeyUp={this.addData}
                     />
@@ -180,7 +219,7 @@ class Comment extends Component {
             </div>
           </Grid>
         </div>
-        {this.state.data.map((item, index) => (
+        {this.state.comments.map(dataComment => (
           <div
             style={{
               marginTop: "30px",
@@ -218,7 +257,9 @@ class Comment extends Component {
                     marginBottom: 20
                   }}
                 >
-                  <Avatar style={{ marginRight: 10 }}>J</Avatar>
+                  <Avatar style={{ marginRight: 10 }}>
+                    {dataComment.fullname[0]}
+                  </Avatar>
                   <div>
                     <Link
                       to="/profile"
@@ -230,7 +271,7 @@ class Comment extends Component {
                         color: "#03a87c"
                       }}
                     >
-                      John doe
+                      {dataComment.fullname}
                     </Link>
                     <Typography
                       variant="caption"
@@ -247,7 +288,7 @@ class Comment extends Component {
                     component="p"
                     style={{ fontFamily: "Frank Ruhl Libre", color: "#000" }}
                   >
-                    {item}
+                    {dataComment.comment}
                   </Typography>
                 </Link>
                 <Links href="/comment" color="inherit">
@@ -319,5 +360,4 @@ class Comment extends Component {
   }
 }
 
-
-export default Comment;
+export default withRouter(Comment);

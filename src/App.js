@@ -51,7 +51,7 @@ function App() {
           <Route path="/category/:name/articles">
             <Category />
           </Route>
-          <Route path="/comment">
+          <Route path="/comment/:title">
             <Comments />
           </Route>
           <Route path="/">
