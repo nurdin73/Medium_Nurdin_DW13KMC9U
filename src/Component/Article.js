@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Bookmark, BookmarkBorderOutlined } from "@material-ui/icons";
 import "../App.css";
 import Axios from "axios";
+import slugify from "slugify";
 
 class Article extends Component {
   constructor(props) {
@@ -21,10 +22,11 @@ class Article extends Component {
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:5000/api/v1/articles`).then(res => {
-      const result = res.data;
-      this.setState({ result: result });
-      console.log(res.data);
+    Axios({
+      method: "get",
+      url: "http://localhost:5000/api/v1/articles"
+    }).then(data => {
+      this.setState({ result: data.data });
     });
   }
 
@@ -45,7 +47,7 @@ class Article extends Component {
                 {articles.category.name}
               </Typography>
               <Link
-                to={url1 + articles.title}
+                to={url1 + slugify(articles.title)}
                 style={{ textDecoration: "none" }}
               >
                 <Typography

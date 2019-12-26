@@ -9,41 +9,34 @@ import {
 } from "@material-ui/core";
 import Links from "@material-ui/core/Link";
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { FavoriteBorderOutlined, BookmarkBorder } from "@material-ui/icons";
+import Axios from "axios";
 class RelatedArticle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      related: [],
+      initial: ""
+    };
+  }
+
+  componentDidMount() {
+    const { match } = this.props;
+    Axios.get(
+      `http://localhost:5000/api/v1/article/${match.params.title}/related`
+    ).then(res => {
+      const result = res.data;
+      this.setState({ related: result, initial: result.fullName });
+    });
+  }
+
   render() {
-    const related = [
-      {
-        image: "https://source.unsplash.com/random",
-        title: "How to Tell a Woman Is into You Without Asking",
-        author: "John Doe",
-        initial: "J",
-        dateCreated: "Dec 7 | 4 min read",
-        like: "2K"
-      },
-      {
-        image: "https://placeimg.com/640/480/any",
-        title: "Lorem Ipsum is simply dummy text of the printing",
-        author: "Julia",
-        initial: "J",
-        dateCreated: "Nov 3 | 14 min read",
-        like: "1,3K"
-      },
-      {
-        image: "https://picsum.photos/1000/1000",
-        title: "Contrary to popular belief, Lorem Ipsum is not ",
-        author: "Franks",
-        initial: "F",
-        dateCreated: "Feb 12 | 10 min read",
-        like: "3K"
-      }
-    ];
     return (
       <div style={{ marginTop: 70 }}>
         <Container>
           <Grid container spacing={4}>
-            {related.map(relatedPost => (
+            {this.state.related.map(relatedPost => (
               <Grid item xs={12} md={4}>
                 <Link to="/article" style={{ textDecoration: "none" }}>
                   <Typography
@@ -78,7 +71,7 @@ class RelatedArticle extends Component {
                 >
                   <div style={{ display: "flex" }}>
                     <Avatar style={{ marginRight: 10 }}>
-                      {relatedPost.initial}
+                      {relatedPost.fullname[0]}
                     </Avatar>
                     <div>
                       <Link
@@ -90,7 +83,7 @@ class RelatedArticle extends Component {
                           fontSize: 16
                         }}
                       >
-                        {relatedPost.author}
+                        {relatedPost.fullname}
                       </Link>
                       <Typography
                         variant="caption"
@@ -114,7 +107,7 @@ class RelatedArticle extends Component {
                             marginRight: 10
                           }}
                         >
-                          <FavoriteBorderOutlined /> {relatedPost.like}
+                          <FavoriteBorderOutlined />
                         </Typography>
                       </Link>
                     </Tooltip>
@@ -274,4 +267,4 @@ class RelatedArticle extends Component {
   }
 }
 
-export default RelatedArticle;
+export default withRouter(RelatedArticle);

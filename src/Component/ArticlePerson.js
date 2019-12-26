@@ -18,7 +18,7 @@ class ArticleData extends Component {
   componentDidMount() {
     const { match } = this.props;
     Axios.get(
-      `http://localhost:5000/api/v1/user/${match.params.username}/articles`
+      `https://medium-server.herokuapp.com/api/v1/user/${match.params.username}/articles`
     ).then(res => {
       const result = res.data;
       this.setState({ result: result });

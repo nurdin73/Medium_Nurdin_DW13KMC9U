@@ -4,6 +4,7 @@ import "../App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Button, Container } from "@material-ui/core";
 import Axios from "axios";
+import slugify from "slugify";
 
 // list of items
 const list = [
@@ -44,7 +45,7 @@ console.log(lists, "ini lists");
 // selected prop will be passed
 const MenuItem = ({ text, target, selected }) => {
   return (
-    <Link to={url + target + url1} style={{ textDecoration: "none" }}>
+    <Link to={url + slugify(target) + url1} style={{ textDecoration: "none" }}>
       <Button style={{ color: "#000" }}>{text}</Button>
     </Link>
   );
@@ -83,9 +84,12 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    Axios.get(`http://localhost:5000/api/v1/categories`).then(res => {
-      const result = res.data;
-      this.setState({ menu: result });
+    Axios({
+      method: "get",
+      url: "http://localhost:5000/api/v1/categories"
+    }).then(res => {
+      console.log(res.data);
+      this.setState({ menu: res.data });
     });
   }
   state = {

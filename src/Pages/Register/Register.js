@@ -11,12 +11,14 @@ import {
 } from "@material-ui/core";
 import "./Register.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Axios from "axios";
 class Register extends Component {
   userData;
   constructor(props) {
     super(props);
     this.state = {
       fullName: "",
+      email: "",
       userName: "",
       password: ""
     };
@@ -30,15 +32,27 @@ class Register extends Component {
   onChangePass = event => {
     this.setState({ password: event.target.value });
   };
+  onChangeMail = event => {
+    this.setState({ email: event.target.value });
+  };
   onSubmit = event => {
     event.preventDefault();
-    localStorage.setItem("fullName", this.state.fullName);
-    localStorage.setItem("userName", this.state.userName);
-    localStorage.setItem("password", this.state.password);
-    this.setState({
-      fullName: "",
-      userName: "",
-      password: ""
+    Axios({
+      method: "post",
+      url: "http://localhost:5000/api/v1/register",
+      data: {
+        fullname: this.state.fullName,
+        username: this.state.userName,
+        email: this.state.email,
+        password: this.state.password,
+        is_active: true,
+        createdAt: new Date("d F Y"),
+        updatedAt: new Date("d F Y")
+      }
+    }).then(res => {
+      localStorage.setItem("token", res.data.token);
+      alert("register is success");
+      window.location.href = "http://localhost:3000/";
     });
   };
   render() {
@@ -75,6 +89,18 @@ class Register extends Component {
                       id="my-fullname"
                       value={this.state.fullName}
                       onChange={this.onChangeName}
+                      aria-describedby="my-helper-text-fullname"
+                    />
+                    <FormHelperText id="my-helper-text-fullname"></FormHelperText>
+                  </FormControl>
+                  <FormControl fullWidth style={{ marginBottom: 10 }}>
+                    <InputLabel htmlFor="my-email">Enter Email..</InputLabel>
+                    <Input
+                      name="email"
+                      type="text"
+                      id="my-email"
+                      value={this.state.email}
+                      onChange={this.onChangeMail}
                       aria-describedby="my-helper-text-fullname"
                     />
                     <FormHelperText id="my-helper-text-fullname"></FormHelperText>

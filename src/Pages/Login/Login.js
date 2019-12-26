@@ -11,15 +11,17 @@ import {
 } from "@material-ui/core";
 import "./Login.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-const Username = localStorage.getItem("userName");
-const Pass = localStorage.getItem("password");
+import Axios from "axios";
 class Login extends Component {
   constructor(props) {
     super(props);
+    if (localStorage.getItem("token") != null) {
+      alert("you have logged in");
+      window.location.href = "http://localhost:3000/";
+    }
     this.state = {
       userName: "",
-      password: "",
-      message: ""
+      password: ""
     };
   }
   onChangeUsername = event => {
@@ -30,13 +32,31 @@ class Login extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    if (Username === this.state.userName && Pass === this.state.password) {
-      localStorage.setItem("isLogin", 1);
-      alert("Login Success");
-      window.location.href = "/home";
-    } else {
-      alert("Username or Password is wrong!");
-    }
+
+    Axios({
+      method: "post",
+      url: "http://localhost:5000/api/v1/login",
+      data: {
+        username: this.state.userName,
+        password: this.state.password
+      }
+    }).then(data => {
+      if (data.data.message === true) {
+        localStorage.setItem("token", data.data.token);
+        alert("login success");
+        window.location.href = "http://localhost:3000/";
+      } else {
+        alert("Username or Password is wrong!");
+      }
+    });
+
+    // if (Username === this.state.userName && Pass === this.state.password) {
+    //   localStorage.setItem("isLogin", 1);
+    //   alert("Login Success");
+    //   window.location.href = "/home";
+    // } else {
+    //   alert("Username or Password is wrong!");
+    // }
   };
   render() {
     return (

@@ -4,11 +4,9 @@ import {
   Grid,
   Typography,
   Button,
-  Card,
   CardActionArea,
   CardMedia,
-  Divider,
-  Container
+  Divider
 } from "@material-ui/core";
 import "../App.css";
 import Axios from "axios";

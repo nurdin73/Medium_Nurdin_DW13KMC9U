@@ -12,10 +12,13 @@ class Popular extends Component {
   }
 
   componentDidMount() {
-    Axios.get(`http://localhost:5000/api/v1/article/latest`).then(res => {
-      const result = res.data;
-      this.setState({ result: result });
-    });
+    Axios.get(`https://medium-server.herokuapp.com/api/v1/article/latest`).then(
+      res => {
+        const result = res.data;
+        console.log(result);
+        this.setState({ result: result });
+      }
+    );
   }
 
   render() {
@@ -31,57 +34,57 @@ class Popular extends Component {
           Popular on medium
         </Typography>
         <Divider style={{ marginBottom: 20 }} />
-        {this.state.result.map(populars => (
-          <Link to="/article" style={{ textDecoration: "none" }}>
-            <Grid container spacing={2}>
-              <Grid item xs={2}>
-                <Typography
-                  variant="h4"
-                  component="p"
-                  color="textSecondary"
-                  style={{ fontFamily: "Poppins", fontWeight: "bold" }}
-                >
-                  0{no++}
-                </Typography>
-              </Grid>
-              <Grid item xs={10}>
-                <Typography
-                  variant="subtitle2"
-                  component="p"
-                  style={{
-                    fontFamily: "Poppins",
-                    fontWeight: "bold",
-                    color: "#000",
-                    lineHeight: "20px",
-                    marginBottom: 5
-                  }}
-                >
-                  {populars.title.substr(0, 30)}...
-                </Typography>
-                <Link to="/articlePerson" style={{ textDecoration: "none" }}>
+        {/* {this.state.result.map(populars => {
+          return (
+            <Link to="/article" style={{ textDecoration: "none" }}>
+              <Grid container spacing={2}>
+                <Grid item xs={2}>
                   <Typography
-                    variant="caption"
+                    variant="h4"
+                    component="p"
+                    color="textSecondary"
+                    style={{ fontFamily: "Poppins", fontWeight: "bold" }}
+                  >
+                    0{no++}
+                  </Typography>
+                </Grid>
+                <Grid item xs={10}>
+                  <Typography
+                    variant="subtitle2"
                     component="p"
                     style={{
                       fontFamily: "Poppins",
+                      fontWeight: "bold",
                       color: "#000",
-                      marginTop: 5
+                      lineHeight: "20px",
+                      marginBottom: 5
                     }}
                   >
-                    {populars.user.username}
+                    {populars.title.substr(0, 30)}...
                   </Typography>
-                </Link>
-                <Typography
-                  variant="caption"
-                  component="p"
-                  style={{ fontFamily: "Poppins", color: "#000" }}
-                >
-                  {/* {populars.dateCreated} */}
-                </Typography>
+                  <Link to="/articlePerson" style={{ textDecoration: "none" }}>
+                    <Typography
+                      variant="caption"
+                      component="p"
+                      style={{
+                        fontFamily: "Poppins",
+                        color: "#000",
+                        marginTop: 5
+                      }}
+                    >
+                      {populars.user.username}
+                    </Typography>
+                  </Link>
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    style={{ fontFamily: "Poppins", color: "#000" }}
+                  ></Typography>
+                </Grid>
               </Grid>
-            </Grid>
-          </Link>
-        ))}
+            </Link>
+          );
+        })} */}
         <Divider style={{ marginTop: 70, marginBottom: 10 }} />
         {/* Menu */}
       </div>
